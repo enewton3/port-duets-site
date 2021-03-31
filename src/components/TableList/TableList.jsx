@@ -13,12 +13,11 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React, { useState, useEffect } from "react";
-import { deleteGuest, showGuests } from "../../services/guests";
+import { deleteTable } from "../../services/tables";
 import { CSVLink } from "react-csv";
 import DeleteWarn from "../DeleteWarn/DeleteWarn";
 
 const useStyles = makeStyles(() => ({
-  root: { width: "100%" },
   header: {
     display: "flex",
     flexFlow: "row wrap",
@@ -40,7 +39,6 @@ const useStyles = makeStyles(() => ({
   },
   list: {
     padding: 0,
-    overflowX: "scroll",
   },
   listItem: {
     display: "flex",
@@ -55,25 +53,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function GuestList({
-  guests,
-  setGuests,
-  fetchGuestList,
-  handleDeleteAll,
+export default function TableList({
+  tables,
+  setTables,
+  fetchTables,
+  handleDeleteAllTables,
 }) {
   const classes = useStyles();
   const [selected, setSelected] = useState([]);
   const [warningOpen, setWarningOpen] = useState(false);
 
   useEffect(() => {
-    fetchGuestList();
-  }, [fetchGuestList]);
+    fetchTables();
+  }, [fetchTables]);
 
-  useEffect(() => {}, [guests]);
+  useEffect(() => {}, [tables]);
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = guests.map((n) => n.id);
+      const newSelecteds = tables.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -103,39 +101,39 @@ export default function GuestList({
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
   const handleDelete = () => {
-    if (selected.length === guests.length) {
-      handleDeleteAll();
+    if (selected.length === tables.length) {
+      handleDeleteAllTables();
     } else {
       selected.forEach((id) => {
-        let newGuests = guests.filter((item) => item.id !== id);
-        setGuests(newGuests);
-        deleteGuest(id);
+        let newTables = tables.filter((item) => item.id !== id);
+        setTables(newTables);
+        deleteTable(id);
       });
     }
     setSelected([]);
   };
 
   return (
-    <div className={classes.root}>
+    <>
       <div className={classes.header}>
         <Typography className={classes.listhead} variant="h5">
-          Guests
+          Tables
         </Typography>
-        <Tooltip title="Total Guests">
-          <Typography className={classes.counter}>{guests.length}</Typography>
+        <Tooltip title="Total Tables">
+          <Typography className={classes.counter}>{tables.length}</Typography>
         </Tooltip>
         <div className={classes.actions}>
           <Tooltip title="Export CSV File">
-            <CSVLink className={classes.actionButtonLink} data={guests}>
+            <CSVLink className={classes.actionButtonLink} data={tables}>
               <Button className={classes.actionButton} variant="outlined">
                 Export CSV
               </Button>
             </CSVLink>
           </Tooltip>
-          <Tooltip title="Refresh Guests">
+          <Tooltip title="Refresh Tables">
             <Button
               className={classes.actionButton}
-              onClick={fetchGuestList}
+              onClick={fetchTables}
               variant="outlined"
             >
               Refresh
@@ -163,46 +161,36 @@ export default function GuestList({
               <Checkbox
                 onClick={(e) => handleSelectAllClick(e)}
                 indeterminate={
-                  selected.length > 0 && selected.length < guests.length
+                  selected.length > 0 && selected.length < tables.length
                 }
-                checked={guests.length > 0 && selected.length === guests.length}
+                checked={tables.length > 0 && selected.length === tables.length}
               />
             </TableCell>
-            <TableCell align="center">Guest ID</TableCell>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Table</TableCell>
-            <TableCell align="center">Here?</TableCell>
+            <TableCell align="center">Table ID</TableCell>
+            <TableCell align="center">Table Pin</TableCell>
+            <TableCell align="center">Table Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {guests.map((guest) => {
-            const isItemSelected = isSelected(guest.id);
+          {tables.map((table) => {
+            const isItemSelected = isSelected(table.id);
 
             return (
               <TableRow
-                key={guest.id}
+                key={table.id}
                 hover
                 role="checkbox"
                 selected={isItemSelected}
               >
                 <TableCell padding="checkbox">
                   <Checkbox
-                    onClick={(e) => handleSelect(e, guest.id)}
+                    onClick={(e) => handleSelect(e, table.id)}
                     checked={isItemSelected}
                   />
                 </TableCell>
-                <TableCell align="center">{guest.id}</TableCell>
-                <TableCell align="center">
-                  {guest.firstname} {guest.lastname}
-                </TableCell>
-                <TableCell align="center">{guest.email}</TableCell>
-                <TableCell align="center">
-                  {guest.table?.table_number}
-                </TableCell>
-                <TableCell align="center">
-                  {guest.here ? "Yes" : "No"}
-                </TableCell>
+                <TableCell align="center">{table.id}</TableCell>
+                <TableCell align="center">{table.table_pin}</TableCell>
+                <TableCell align="center">{table.table_number}</TableCell>
               </TableRow>
             );
           })}
@@ -213,6 +201,6 @@ export default function GuestList({
         onClose={() => setWarningOpen(false)}
         handleDelete={handleDelete}
       />
-    </div>
+    </>
   );
 }

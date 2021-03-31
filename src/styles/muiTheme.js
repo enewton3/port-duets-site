@@ -1,21 +1,21 @@
 import { createMuiTheme } from "@material-ui/core";
 
 const theme = createMuiTheme({
-  // palette: {
-  //   primary: {
-  //     // light: "",
-  //     main: "#3f51b5",
-  //     // main: "#ffffff",
-  //     // dark: "",
-  //     // contrastText: "#ffffff",
-  //   },
-  //   secondary: {
-  //     // light: "",
-  //     // main: "#ffffff",
-  //     // dark: "",
-  //     // contrastText: "#ffffff",
-  //   },
-  // },
+  palette: {
+    primary: {
+      // light: "",
+      main: "rgb(199, 135, 100)",
+      // main: "#ffffff",
+      // dark: "",
+      // contrastText: "#ffffff",
+    },
+    secondary: {
+      // light: "",
+      main: "rgb(79, 33, 95)",
+      // dark: "",
+      // contrastText: "#ffffff",
+    },
+  },
   typography: {
     fontFamily: [
       "Montserrat",

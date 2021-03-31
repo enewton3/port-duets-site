@@ -2,7 +2,6 @@ import { Button, makeStyles } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
 import React from "react";
 import { useHistory } from "react-router";
-import Logo from "../../components/Logo";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
@@ -66,13 +65,12 @@ export default function Event({ currentUser }) {
   const classes = useStyles();
   const history = useHistory();
 
-  if (!currentUser) {
-    history.push("/");
-  }
+  // if (!currentUser) {
+  //   history.push("/");
+  // }
 
   return (
     <div className={classes.event}>
-      <Logo />
       {/* <div className={classes.bg}></div> */}
       <div className={classes.vimeoframe}>
         <VimeoFrame />
