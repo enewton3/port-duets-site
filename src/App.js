@@ -53,7 +53,7 @@ function App() {
     verifyGuest();
   }, []);
 
-  const logoutGuest = () => {};
+  // const logoutGuest = () => {};
 
   return (
     <div className={classes.app}>
