@@ -1,37 +1,57 @@
 import React, { useState } from "react";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import { useHistory } from "react-router";
-import { orange } from "@material-ui/core/colors";
-// const correct = process.env.REACT_APP_EVENT_PASSWORD;
 
 const useStyles = makeStyles((theme) => ({
   loginform: {
     display: "flex",
     flexFlow: "column wrap",
     width: "50%",
+    height: "45vh",
     margin: "0 auto",
+    justifyContent: "space-between",
+  },
+  names: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  firstNameInput: {
+    color: "white",
+    background: "white",
+    width: "50%",
+  },
+  lastNameInput: {
+    color: "white",
+    background: "white",
+    width: "50%",
+    marginLeft: "1vw",
   },
   input: {
     color: "white",
     background: "white",
   },
   button: {
-    background: orange[500],
+    background: theme.palette.primary.main,
     color: "white",
     margin: "2vh auto",
     fontSize: "1rem",
     boxShadow: "2px 2px 5px black",
     "&:hover": {
-      backgroundColor: orange[400],
+      backgroundColor: theme.palette.primary.light,
       color: "#FFF",
     },
   },
 }));
 
-export default function LoginForm() {
-  const [formData, setFormData] = useState({});
+export default function LoginForm({ loginGuest }) {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    table_pin: "",
+  });
   const classes = useStyles();
-  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,20 +63,44 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password === process.env.REACT_APP_EVENT_PASSWORD) {
-      history.push("/form");
-    } else {
-      window.alert("Incorrect password, please try again");
-    }
+    
+    loginGuest(formData);
   };
 
   return (
     <form className={classes.loginform} onSubmit={(e) => handleSubmit(e)}>
+      <div className={classes.names}>
+        <TextField
+          className={classes.firstNameInput}
+          variant="filled"
+          label="First Name"
+          name="firstname"
+          onChange={(e) => handleChange(e)}
+          required
+        />
+        <TextField
+          className={classes.lastNameInput}
+          variant="filled"
+          label="Last Name"
+          name="lastname"
+          onChange={(e) => handleChange(e)}
+          required
+        />
+      </div>
       <TextField
         className={classes.input}
         variant="filled"
-        label="Password"
-        name="password"
+        label="Email"
+        name="email"
+        type="email"
+        onChange={(e) => handleChange(e)}
+        required
+      />
+      <TextField
+        className={classes.input}
+        variant="filled"
+        label="Table Pin"
+        name="table_pin"
         type="password"
         onChange={(e) => handleChange(e)}
         required

@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import LoginForm from "../../components/LoginForm";
-import HeaderGraphic from "../../components/HeaderGraphic";
 
 const useStyles = makeStyles((theme) => ({
   welcome: {
@@ -18,17 +17,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Welcome({ currentUser }) {
+export default function Welcome({ loginGuest, setCurrentGuest }) {
   const classes = useStyles();
 
   return (
     <div className={classes.welcome}>
-      <HeaderGraphic />
-      {/* <Typography className={classes.blurb} variant="h4">
-        Welcome to Edgerley Family South Boston Club's 45th Annual <br />
-        St. Patrick's Day Luncheon!
-      </Typography> */}
-      <LoginForm />
+      <LoginForm loginGuest={loginGuest} />
     </div>
   );
 }
