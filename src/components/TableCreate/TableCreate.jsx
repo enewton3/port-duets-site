@@ -18,6 +18,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
   const [formData, setFormData] = useState({
     table_pin: "",
     table_number: "",
+    zoom_lin: "",
   });
 
   const handleChange = (e) => {
@@ -46,6 +47,14 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
             variant="filled"
             label="Table Pin"
             name="table_pin"
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <TextField
+            className={classes.input}
+            variant="filled"
+            label="Zoom Link"
+            name="zoom_link"
             onChange={(e) => handleChange(e)}
             required
           />
