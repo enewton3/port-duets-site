@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import theme from "./styles/muiTheme";
-import { makeStyles, ThemeProvider } from "@material-ui/core";
+import {
+  makeStyles,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@material-ui/core";
 import { UserContext } from "./context/UserContext";
 import Welcome from "./screens/Welcome/Welcome";
 import Layout from "./components/shared/Layout";
@@ -37,14 +41,21 @@ function App() {
     const response = await checkAndUpdate(guestData);
     if (response.table) {
       const tableNumber = response.table.table_number;
-      setCurrentGuest(response.guest);
+      setCurrentGuest(response);
       history.push(`/table/${tableNumber}`);
     } else {
       window.alert(response);
     }
   };
 
-  const verifyGuest = () => {};
+  const verifyGuest = () => {
+    const resp = checkLoggedIn();
+    console.log(resp);
+  };
+
+  useEffect(() => {
+    verifyGuest();
+  }, []);
 
   const logoutGuest = () => {};
 

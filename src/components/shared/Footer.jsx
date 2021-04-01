@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     width: "20vw",
+    marginLeft: "1vw",
+    "@media (max-width: 1024px)": { width: "40vw" },
+    "@media (max-width: 500px)": { width: "60vw" },
   },
 }));
 
