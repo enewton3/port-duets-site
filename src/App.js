@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import theme from "./styles/muiTheme";
-import {
-  makeStyles,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@material-ui/core";
+import { makeStyles, ThemeProvider } from "@material-ui/core";
 import { UserContext } from "./context/UserContext";
 import Welcome from "./screens/Welcome/Welcome";
 import Layout from "./components/shared/Layout";
-import { checkLoggedIn, checkAndUpdate, logoutGuest } from "./services/guests";
+import { checkLoggedIn, checkAndUpdate } from "./services/guests";
 import backgroundimg from "./assets/background.png";
 import AdminContainer from "./containers/AdminContainer/AdminContainer";
 import Table from "./screens/Table/Table";

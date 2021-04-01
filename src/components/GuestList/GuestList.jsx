@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React, { useState, useEffect } from "react";
-import { deleteGuest, showGuests } from "../../services/guests";
+import { deleteGuest } from "../../services/guests";
 import { CSVLink } from "react-csv";
 import DeleteWarn from "../DeleteWarn/DeleteWarn";
 

@@ -4,6 +4,7 @@ const localStorage = window.localStorage;
 export const setLoggedIn = async (formData) => {
   const resp = await api.post("/authguest", {});
   localStorage.setItem("duets-guest");
+  return resp;
 };
 
 export const checkLoggedIn = async () => {
