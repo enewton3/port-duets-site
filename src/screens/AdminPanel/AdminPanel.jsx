@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: { display: "flex", flexFlow: "column wrap" },
   vimeopaper: {
-    width: "80vw",
+    width: "60vw",
     padding: "2vh 1vw 2vh 1vw",
     maxHeight: "80vh",
     overflowY: "scroll",
