@@ -36,8 +36,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "5vh",
     display: "flex",
     flexFlow: "row wrap",
-    // alignItems: "baseline",
+    alignItems: "baseline",
     justifyContent: "space-around",
+    justifySelf: "center",
+    alignSelf: "center",
     "@media (max-width: 800px)": {
       flexFlow: "column wrap",
       justifyContent: "center",
@@ -46,6 +48,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: { display: "flex", flexFlow: "column wrap" },
+  vimeopaper: {
+    width: "80vw",
+    padding: "2vh 1vw 2vh 1vw",
+    maxHeight: "80vh",
+    overflowY: "scroll",
+    marginTop: "2vh",
+    "@media (max-width: 800px)": {
+      width: "90vw",
+      marginTop: "2vh",
+    },
+  },
   paper: {
     width: "47vw",
     padding: "2vh 1vw 2vh 1vw",
@@ -53,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     marginTop: "2vh",
     "@media (max-width: 800px)": {
-      width: "80vw",
+      width: "90vw",
       marginTop: "2vh",
     },
   },
@@ -99,7 +112,7 @@ export default function AdminPanel(props) {
       </AppBar>
 
       <div className={classes.panelBody}>
-        <Paper className={classes.paper}>
+        <Paper className={classes.vimeopaper}>
           <VimeoFrame />
         </Paper>
         <div className={classes.container}>

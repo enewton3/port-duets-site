@@ -18,7 +18,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
   const [formData, setFormData] = useState({
     table_pin: "",
     table_number: "",
-    zoom_lin: "",
+    zoom_link: "",
   });
 
   const handleChange = (e) => {

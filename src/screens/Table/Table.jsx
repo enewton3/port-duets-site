@@ -1,6 +1,8 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
+import { purple } from "@material-ui/core/colors";
 import React from "react";
 import EventFrame from "../../components/EventFrame/EventFrame";
+import Layout from "../../components/shared/Layout";
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -13,19 +15,41 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     width: "100vw",
   },
+  give: { alignSelf: "flex-end" },
+  button: { alignSelf: "flex-end", backgroundColor: purple[800] },
 }));
 
 export default function Table({ currentGuest }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.event}>
-      <EventFrame />
-      <a href={currentGuest?.table.zoom_link}>
-        <Button variant="outlined" color="primary">
-          Table Zoom Link
-        </Button>
-      </a>
-    </div>
+    <Layout>
+      <div className={classes.event}>
+        <Typography className={classes.give}>
+          Text To Give - XXX.XXX.XXX
+        </Typography>
+        <a
+          className={classes.button}
+          href="https://www.donate.com"
+          rel="noreferrer"
+          target="blank"
+        >
+          <Button variant="outlined" color="primary">
+            Donate
+          </Button>
+        </a>
+        <EventFrame />
+        <a className={classes.button} href={currentGuest?.table.zoom_link}>
+          <Button variant="outlined" color="primary">
+            Program Book
+          </Button>
+        </a>
+        <a className={classes.button} href={currentGuest?.table.zoom_link}>
+          <Button variant="outlined" color="primary">
+            Following the program, join your table here
+          </Button>
+        </a>
+      </div>
+    </Layout>
   );
 }

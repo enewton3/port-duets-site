@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import LoginForm from "../../components/LoginForm";
+import Layout from "../../components/shared/Layout";
 
 const useStyles = makeStyles((theme) => ({
   welcome: {
@@ -21,8 +22,10 @@ export default function Welcome({ loginGuest, setCurrentGuest }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.welcome}>
-      <LoginForm loginGuest={loginGuest} />
-    </div>
+    <Layout>
+      <div className={classes.welcome}>
+        <LoginForm loginGuest={loginGuest} />
+      </div>
+    </Layout>
   );
 }
