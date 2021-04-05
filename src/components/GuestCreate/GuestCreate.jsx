@@ -19,6 +19,7 @@ export default function GuestCreate({ onClose, open, handleCreate }) {
     firstname: "",
     lastname: "",
     email: "",
+    table_number: "",
   });
 
   const handleChange = (e) => {
@@ -62,9 +63,8 @@ export default function GuestCreate({ onClose, open, handleCreate }) {
           <TextField
             className={classes.input}
             variant="filled"
-            label="Table Pin"
-            name="table_pin"
-            type="password"
+            label="Table"
+            name="table_number"
             onChange={(e) => handleChange(e)}
             required
           />

@@ -7,7 +7,7 @@ import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 const useStyles = makeStyles(() => ({
   root: {
     // display: "flex",
-    // position: "absolute",
+    position: "relative",
     // alignItems: "center",
     // justifyContent: "center",
     width: "60vw",
@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "rgb(69, 119, 135)",
     justifySelf: "center",
     alignSelf: "center",
+    position: "absolute",
     height: "95%",
     width: "97%",
     borderTopLeftRadius: "70% 20%",
@@ -56,6 +57,7 @@ const useStyles = makeStyles(() => ({
     backgroundImage: `url(${vineborder})`,
     height: "100%",
     width: "100%",
+    position: "absolute",
     backgroundSize: "contain",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -77,9 +79,13 @@ const useStyles = makeStyles(() => ({
     "@media (max-width: 500px)": { width: "12vw" },
   },
   vimeoframe: {
-    marginBottom: "1vh",
-    gridArea: "1/1",
-    width: "95%",
+    // marginBottom: "1vh",
+    // gridArea: "1/1",
+    // width: "95%",
+    width: "96%",
+    position: "absolute",
+    // height: "100vh",
+    // height: "50vh",
     alignSelf: "flex-end",
     justifySelf: "center",
     "@media (max-width: 1024px)": { width: "90%", marginBottom: "0" },
@@ -94,7 +100,6 @@ export default function EventFrame() {
       <div className={classes.vines}>
         <img className={classes.logo} src={logo} alt="logo" />
       </div>
-
       <div className={classes.vimeoframe}>
         <VimeoFrame />
       </div>

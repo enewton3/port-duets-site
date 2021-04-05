@@ -1,16 +1,16 @@
 import api from "./apiconfig";
 const localStorage = window.localStorage;
 
-export const setLoggedIn = async (formData) => {
-  const resp = await api.post("/authguest", {});
-  localStorage.setItem("duets-guest");
-  return resp;
-};
+// export const setLoggedIn = async (formData) => {
+//   const resp = await api.post("/authguest", {});
+//   localStorage.setItem("duets-guest");
+//   return resp;
+// };
 
 export const checkLoggedIn = async () => {
   const token = localStorage.getItem("guest-token");
   if (token) {
-    const resp = await api.get("/verifyguest", { token: token });
+    const resp = await api.post(`/verifyguest`, { token: token });
     return resp.data;
   }
   return null;
@@ -20,7 +20,6 @@ export const logoutGuest = async (id) => {
   const response = await api.put(`/duets_guests/${id}`, {
     duets_guest: { active: false },
   });
-  localStorage.removeItem("guest-token");
   return response;
 };
 
@@ -50,8 +49,9 @@ export const checkAndUpdate = async (formData) => {
     duets_guest: formData,
   });
   localStorage.setItem("guest-token", updatedGuest.data.token);
-  return {
-    guest: updatedGuest.data.guest,
-    table: updatedGuest.data.table,
-  };
+  return updatedGuest.data;
+};
+
+export const removeToken = () => {
+  localStorage.removeItem("guest-token");
 };

@@ -169,6 +169,7 @@ export default function TableList({
             <TableCell align="center">Table ID</TableCell>
             <TableCell align="center">Table Pin</TableCell>
             <TableCell align="center">Table Number</TableCell>
+            <TableCell align="center">Guests</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -191,6 +192,9 @@ export default function TableList({
                 <TableCell align="center">{table.id}</TableCell>
                 <TableCell align="center">{table.table_pin}</TableCell>
                 <TableCell align="center">{table.table_number}</TableCell>
+                <TableCell align="center">
+                  {table.duets_guests.length}
+                </TableCell>
               </TableRow>
             );
           })}

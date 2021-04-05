@@ -1,6 +1,7 @@
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
 import React, { useState } from "react";
+import Layout from "../../components/shared/Layout";
 
 const useStyles = makeStyles((theme) => ({
   loginform: {
@@ -47,28 +48,30 @@ export default function AdminLogin({ handleLogin }) {
   };
 
   return (
-    <form className={classes.loginform} onSubmit={handleSubmit}>
-      <TextField
-        className={classes.input}
-        variant="filled"
-        label="Username"
-        name="username"
-        type="text"
-        onChange={(e) => handleChange(e)}
-        required
-      />
-      <TextField
-        className={classes.input}
-        variant="filled"
-        label="Password"
-        name="password"
-        type="password"
-        onChange={(e) => handleChange(e)}
-        required
-      />
-      <Button className={classes.button} type="submit">
-        Submit
-      </Button>
-    </form>
+    <Layout>
+      <form className={classes.loginform} onSubmit={handleSubmit}>
+        <TextField
+          className={classes.input}
+          variant="filled"
+          label="Username"
+          name="username"
+          type="text"
+          onChange={(e) => handleChange(e)}
+          required
+        />
+        <TextField
+          className={classes.input}
+          variant="filled"
+          label="Password"
+          name="password"
+          type="password"
+          onChange={(e) => handleChange(e)}
+          required
+        />
+        <Button className={classes.button} type="submit">
+          Submit
+        </Button>
+      </form>
+    </Layout>
   );
 }

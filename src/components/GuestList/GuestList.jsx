@@ -107,9 +107,9 @@ export default function GuestList({
       handleDeleteAll();
     } else {
       selected.forEach((id) => {
-        let newGuests = guests.filter((item) => item.id !== id);
-        setGuests(newGuests);
-        deleteGuest(id);
+        if (deleteGuest(id)) {
+          setGuests((prev) => prev.filter((item) => item.id !== id));
+        }
       });
     }
     setSelected([]);
@@ -201,7 +201,7 @@ export default function GuestList({
                   {guest.table?.table_number}
                 </TableCell>
                 <TableCell align="center">
-                  {guest.here ? "Yes" : "No"}
+                  {guest.active ? "Yes" : "No"}
                 </TableCell>
               </TableRow>
             );

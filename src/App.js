@@ -4,8 +4,12 @@ import theme from "./styles/muiTheme";
 import { makeStyles, ThemeProvider } from "@material-ui/core";
 import { UserContext } from "./context/UserContext";
 import Welcome from "./screens/Welcome/Welcome";
-import Layout from "./components/shared/Layout";
-import { checkLoggedIn, checkAndUpdate } from "./services/guests";
+import {
+  checkLoggedIn,
+  checkAndUpdate,
+  logoutGuest,
+  removeToken,
+} from "./services/guests";
 import backgroundimg from "./assets/background.png";
 import AdminContainer from "./containers/AdminContainer/AdminContainer";
 import Table from "./screens/Table/Table";
@@ -20,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     height: "100%",
     minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
   },
 }));
 
@@ -44,38 +46,51 @@ function App() {
     }
   };
 
-  const verifyGuest = () => {
-    const resp = checkLoggedIn();
-    console.log(resp);
+  const verifyGuest = async () => {
+    const resp = await checkLoggedIn();
+    setCurrentGuest(resp);
   };
 
   useEffect(() => {
     verifyGuest();
   }, []);
 
-  // const logoutGuest = () => {};
+  useEffect(() => {
+    const handleLogout = () => {
+      if (currentGuest) {
+        removeToken();
+        logoutGuest(currentGuest.id);
+        setCurrentGuest(null);
+        console.log("bye");
+      }
+    };
+
+    window.addEventListener("beforeunload", handleLogout);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleLogout);
+    };
+  }, [currentGuest]);
 
   return (
     <div className={classes.app}>
       <ThemeProvider theme={theme}>
         <UserContext.Provider value={currentGuest}>
-          <Layout>
-            <Switch>
-              <Route path="/panel">
-                <AdminContainer />
-              </Route>
-              <Route path="/table/:id">
-                <Table currentGuest={currentGuest} />
-              </Route>
-              <Route exact path="/">
-                <Welcome
-                  setCurrentGuest={setCurrentGuest}
-                  loginGuest={loginGuest}
-                  verifyGuest={verifyGuest}
-                />
-              </Route>
-            </Switch>
-          </Layout>
+          <Switch>
+            <Route path="/panel">
+              <AdminContainer />
+            </Route>
+            <Route path="/table/:id">
+              <Table currentGuest={currentGuest} />
+            </Route>
+            <Route exact path="/">
+              <Welcome
+                setCurrentGuest={setCurrentGuest}
+                loginGuest={loginGuest}
+                verifyGuest={verifyGuest}
+              />
+            </Route>
+          </Switch>
         </UserContext.Provider>
       </ThemeProvider>
     </div>
