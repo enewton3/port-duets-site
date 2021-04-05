@@ -5,18 +5,18 @@ import { makeStyles } from "@material-ui/core";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 
 const useStyles = makeStyles(() => ({
-  root: {
-    // display: "flex",
-    // position: "absolute",
-    // alignItems: "center",
-    // justifyContent: "center",
-    width: "60vw",
-    height: "80vh",
-    // "@media (max-width: 500px)": { height: "40vh" },
-    display: "grid",
-    alignItems: "center",
-    "@media (max-width: 1024px)": { width: "100vw", height: "60vh" },
-  },
+  // root: {
+  //   // display: "flex",
+  //   // position: "absolute",
+  //   // alignItems: "center",
+  //   // justifyContent: "center",
+  //   width: "60vw",
+  //   height: "80vh",
+  //   // "@media (max-width: 500px)": { height: "40vh" },
+  //   display: "grid",
+  //   alignItems: "center",
+  //   "@media (max-width: 1024px)": { width: "100vw", height: "60vh" },
+  // },
   bg: {
     backgroundColor: "rgb(69, 119, 135)",
     justifySelf: "center",
@@ -77,10 +77,13 @@ const useStyles = makeStyles(() => ({
     "@media (max-width: 500px)": { width: "12vw" },
   },
   vimeoframe: {
-    marginBottom: "1vh",
-    gridArea: "1/1",
-    width: "95%",
-    alignSelf: "flex-end",
+    // marginBottom: "1vh",
+    // gridArea: "1/1",
+    // width: "95%",
+    width: "100vw",
+    height: "100vh",
+    // height: "50vh",
+    // alignSelf: "flex-end",
     justifySelf: "center",
     "@media (max-width: 1024px)": { width: "90%", marginBottom: "0" },
   },
@@ -89,15 +92,15 @@ const useStyles = makeStyles(() => ({
 export default function EventFrame() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <div className={classes.bg}></div>
-      <div className={classes.vines}>
-        <img className={classes.logo} src={logo} alt="logo" />
-      </div>
+    // <div className={classes.root}>
+    // {/* <div className={classes.bg}></div> */}
+    // {/* <div className={classes.vines}>
+    //   <img className={classes.logo} src={logo} alt="logo" />
+    // </div> */}
 
-      <div className={classes.vimeoframe}>
-        <VimeoFrame />
-      </div>
+    <div className={classes.vimeoframe}>
+      <VimeoFrame />
     </div>
+    // </div>
   );
 }

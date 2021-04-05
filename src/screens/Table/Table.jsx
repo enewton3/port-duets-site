@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
-    margin: "0 auto",
+    // margin: "0 auto",
     // paddingBottom: "10vh",
     height: "100vh",
     width: "100vw",
