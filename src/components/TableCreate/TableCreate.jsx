@@ -7,19 +7,35 @@ import {
   makeStyles,
   TextField,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   input: {},
 }));
 
-export default function TableCreate({ onClose, open, handleCreateTable }) {
+export default function TableCreate({
+  onClose,
+  open,
+  handleCreateTable,
+  handleEditTable,
+  edit,
+}) {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     table_pin: "",
     table_number: "",
     zoom_link: "",
   });
+
+  useEffect(() => {
+    if (edit) {
+      setFormData({
+        table_pin: edit.table_pin,
+        table_number: edit.table_number,
+        zoom_link: edit.zoom_link,
+      });
+    }
+  }, [edit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +47,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
 
   return (
     <Dialog onClose={onClose} open={open}>
-      <DialogTitle>Add A Guest</DialogTitle>
+      <DialogTitle>{edit ? <>Edit</> : <>Add</>} A Table</DialogTitle>
       <DialogContent>
         <form>
           <TextField
@@ -39,6 +55,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
             variant="filled"
             label="Table Number"
             name="table_number"
+            value={formData.table_number}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -47,6 +64,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
             variant="filled"
             label="Table Pin"
             name="table_pin"
+            value={formData.table_pin}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -55,6 +73,7 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
             variant="filled"
             label="Zoom Link"
             name="zoom_link"
+            value={formData.zoom_link}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -63,11 +82,13 @@ export default function TableCreate({ onClose, open, handleCreateTable }) {
       <DialogActions>
         <Button
           onClick={() => {
-            handleCreateTable(formData);
+            edit
+              ? handleEditTable(formData, edit.id)
+              : handleCreateTable(formData);
             onClose();
           }}
         >
-          Create Table
+          {edit ? <>Edit</> : <>Create</>} Table
         </Button>
         <Button variant="outlined" onClick={onClose} autoFocus>
           Nevermind

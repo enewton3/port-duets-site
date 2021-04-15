@@ -10,12 +10,17 @@ export const showTables = async () => {
   return response.data;
 };
 
+export const editTable = async (formData, id) => {
+  const response = await api.put(`/tables/${id}`, formData);
+  return response.data;
+};
+
 export const deleteTable = async (id) => {
   const response = await api.delete(`/tables/${id}`);
   return response.data;
 };
 
-// export const deleteAllTables = async () => {
-//   const response = await api.delete("/allduetsguests");
-//   return response.data;
-// };
+export const deleteAllTables = async () => {
+  const response = await api.delete("/alltables");
+  return response.data;
+};
