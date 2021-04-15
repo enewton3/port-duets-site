@@ -168,7 +168,7 @@ export default function GuestList({
                 checked={guests.length > 0 && selected.length === guests.length}
               />
             </TableCell>
-            <TableCell align="center">Guest ID</TableCell>
+            {/* <TableCell align="center">Guest ID</TableCell> */}
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Table</TableCell>
@@ -192,7 +192,7 @@ export default function GuestList({
                     checked={isItemSelected}
                   />
                 </TableCell>
-                <TableCell align="center">{guest.id}</TableCell>
+                {/* <TableCell align="center">{guest.id}</TableCell> */}
                 <TableCell align="center">
                   {guest.firstname} {guest.lastname}
                 </TableCell>

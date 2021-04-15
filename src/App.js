@@ -4,12 +4,7 @@ import theme from "./styles/muiTheme";
 import { makeStyles, ThemeProvider } from "@material-ui/core";
 import { UserContext } from "./context/UserContext";
 import Welcome from "./screens/Welcome/Welcome";
-import {
-  checkLoggedIn,
-  checkAndUpdate,
-  logoutGuest,
-  removeToken,
-} from "./services/guests";
+import { checkLoggedIn, createAndUpdate, logoutGuest } from "./services/guests";
 import backgroundimg from "./assets/background.png";
 import AdminContainer from "./containers/AdminContainer/AdminContainer";
 import Table from "./screens/Table/Table";
@@ -36,7 +31,7 @@ function App() {
     // api call to get table_number associated with pin
     // checks to make sure pin is associated with correct last name
     // api call that updates user info and then gets table number associated with the input pin
-    const response = await checkAndUpdate(guestData);
+    const response = await createAndUpdate(guestData);
     if (response.table) {
       const tableNumber = response.table.table_number;
       setCurrentGuest(response);
@@ -48,6 +43,7 @@ function App() {
 
   const verifyGuest = async () => {
     const resp = await checkLoggedIn();
+    // console.log(resp);
     setCurrentGuest(resp);
   };
 
@@ -58,10 +54,10 @@ function App() {
   useEffect(() => {
     const handleLogout = () => {
       if (currentGuest) {
-        removeToken();
-        logoutGuest(currentGuest.id);
+        logoutGuest(currentGuest.guest.id);
         setCurrentGuest(null);
         console.log("bye");
+        window.alert("triggered");
       }
     };
 

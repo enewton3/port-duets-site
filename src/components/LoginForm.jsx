@@ -7,8 +7,9 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     width: "50%",
     height: "45vh",
-    margin: "0 auto",
     justifyContent: "space-between",
+    "@media (max-width: 600px)": { width: "80%" },
+    "@media (max-width: 400px)": { width: "100%" },
   },
   names: {
     display: "flex",

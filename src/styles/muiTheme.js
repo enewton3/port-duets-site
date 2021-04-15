@@ -5,15 +5,14 @@ const theme = createMuiTheme({
     primary: {
       // light: "",
       main: "rgb(199, 135, 100)",
-      // main: "#ffffff",
       // dark: "",
       // contrastText: "#ffffff",
     },
     secondary: {
       // light: "",
       main: "rgb(79, 33, 95)",
-      // dark: "",
-      // contrastText: "#ffffff",
+      // dark: "black",
+      contrastText: "black",
     },
   },
   typography: {

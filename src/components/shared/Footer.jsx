@@ -1,29 +1,58 @@
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import footerLogo from "../../assets/cancer_center_logo.png";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
     position: "fixed",
     bottom: 0,
+    width: "100vw",
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "space-around",
+    alignItems: "flex-end",
+    textAlign: "center",
   },
-  logo: {
-    width: "20vw",
-    marginLeft: "1vw",
-    "@media (max-width: 1024px)": { width: "40vw" },
-    "@media (max-width: 500px)": { width: "60vw" },
+  give: {},
+  link: {
+    textDecoration: "none",
+  },
+  button: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+    },
   },
 }));
 
-export default function Footer() {
+export default function Footer(props) {
+  const { currentGuest } = props;
   const classes = useStyles();
+
   return (
     <footer className={classes.footer}>
-      <img
-        className={classes.logo}
-        src={footerLogo}
-        alt="MGH cancer center logo"
-      />
+      <div>
+        <Typography>Click to View</Typography>
+        <a className={classes.link} href={currentGuest?.table.zoom_link}>
+          <Button className={classes.button} variant="outlined" color="primary">
+            Program Book
+          </Button>
+        </a>
+      </div>
+      <Typography className={classes.give}>
+        Text 'Friends' To <br />
+        XXX.XXX.XXX to give
+      </Typography>
+      <div>
+        <Typography>
+          Following the Event <br /> Click to exit and
+        </Typography>
+        <a className={classes.link} href={currentGuest?.table.zoom_link}>
+          <Button className={classes.button} variant="outlined" color="primary">
+            Join your table
+          </Button>
+        </a>
+      </div>
     </footer>
   );
 }
