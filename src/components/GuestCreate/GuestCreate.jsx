@@ -74,6 +74,12 @@ export default function GuestCreate({ onClose, open, handleCreate }) {
         <Button
           onClick={() => {
             handleCreate(formData);
+            setFormData({
+              firstname: "",
+              lastname: "",
+              email: "",
+              table_number: "",
+            });
             onClose();
           }}
         >

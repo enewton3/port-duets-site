@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import Footer from "./Footer";
+// import Footer from "./Footer";
+import Header from "./Header";
 const useStyles = makeStyles((theme) => ({
   layout: {
     display: "flex",
@@ -14,8 +15,9 @@ export default function Layout(props) {
   const classes = useStyles();
   return (
     <div className={classes.layout}>
+      <Header />
       {props.children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

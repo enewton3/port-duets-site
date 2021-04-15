@@ -10,8 +10,14 @@ const localStorage = window.localStorage;
 export const checkLoggedIn = async () => {
   const token = localStorage.getItem("guest-token");
   if (token) {
-    const resp = await api.post(`/verifyguest`, { token: token });
-    return resp.data;
+    try {
+      const resp = await api.post(`/verifyguest`, { token: token });
+      // console.log(resp);
+      return resp.data;
+    } catch (error) {
+      removeToken();
+      // console.log(error);
+    }
   }
   return null;
 };
@@ -43,9 +49,9 @@ export const deleteAllGuests = async () => {
   return response.data;
 };
 
-export const checkAndUpdate = async (formData) => {
+export const createAndUpdate = async (formData) => {
   //api call that checks the pin of the submitted pin against the databasea
-  const updatedGuest = await api.put("/checkandupdate", {
+  const updatedGuest = await api.post("/createandupdate", {
     duets_guest: formData,
   });
   localStorage.setItem("guest-token", updatedGuest.data.token);
