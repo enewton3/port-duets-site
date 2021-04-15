@@ -8,7 +8,7 @@ import {
   createGuest,
   deleteAllGuests,
 } from "../../services/guests";
-import { showTables } from "../../services/tables";
+import { showTables, deleteAllTables, editTable } from "../../services/tables";
 
 export default function AdminContainer() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -57,13 +57,22 @@ export default function AdminContainer() {
   };
 
   //tables list functions and api calls
-
   const fetchTables = useCallback(async () => {
     const resp = await showTables();
     setTables(resp);
   }, []);
 
-  const handleDeleteAllTables = () => {};
+  const handleDeleteAllTables = async () => {
+    const resp = await deleteAllTables();
+    setTables([]);
+    return resp;
+  };
+
+  const handleEditTable = async (formData, id) => {
+    const resp = await editTable(formData, id);
+    fetchTables();
+    return resp;
+  };
 
   return currentUser ? (
     <AdminPanel
@@ -77,6 +86,7 @@ export default function AdminContainer() {
       setTables={setTables}
       handleDeleteAllTables={handleDeleteAllTables}
       fetchTables={fetchTables}
+      handleEditTable={handleEditTable}
     />
   ) : (
     <AdminLogin handleLogin={handleLogin} />

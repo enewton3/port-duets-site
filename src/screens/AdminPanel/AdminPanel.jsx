@@ -83,6 +83,7 @@ export default function AdminPanel(props) {
     tables,
     setTables,
     handleDeleteAllTables,
+    handleEditTable,
     fetchTables,
   } = props;
   const [createOpen, setCreateOpen] = useState(false);
@@ -147,6 +148,7 @@ export default function AdminPanel(props) {
               setTables={setTables}
               handleDeleteAllTables={handleDeleteAllTables}
               fetchTables={fetchTables}
+              handleEditTable={handleEditTable}
             />
           </Paper>
           <Button

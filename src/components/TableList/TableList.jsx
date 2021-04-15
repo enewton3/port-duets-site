@@ -16,6 +16,8 @@ import React, { useState, useEffect } from "react";
 import { deleteTable } from "../../services/tables";
 import { CSVLink } from "react-csv";
 import DeleteWarn from "../DeleteWarn/DeleteWarn";
+import EditIcon from "@material-ui/icons/Edit";
+import TableCreate from "../TableCreate/TableCreate";
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -58,16 +60,20 @@ export default function TableList({
   setTables,
   fetchTables,
   handleDeleteAllTables,
+  handleEditTable,
 }) {
   const classes = useStyles();
   const [selected, setSelected] = useState([]);
   const [warningOpen, setWarningOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
     fetchTables();
   }, [fetchTables]);
 
   useEffect(() => {}, [tables]);
+
+  const sortedTables = tables.sort((a, b) => a.table_number - b.table_number);
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -151,8 +157,21 @@ export default function TableList({
               </Button>
             </Tooltip>
           ) : null}
+
+          {selected.length === 1 ? (
+            <Tooltip title="Edit Selected">
+              <Button
+                className={classes.actionButton}
+                onClick={() => setEditOpen(true)}
+                variant="outlined"
+              >
+                <EditIcon />
+              </Button>
+            </Tooltip>
+          ) : null}
         </div>
       </div>
+
       <Divider />
       <Table stickyHeader className={classes.list} size="small">
         <TableHead>
@@ -173,7 +192,7 @@ export default function TableList({
           </TableRow>
         </TableHead>
         <TableBody>
-          {tables.map((table) => {
+          {sortedTables.map((table) => {
             const isItemSelected = isSelected(table.id);
 
             return (
@@ -204,6 +223,15 @@ export default function TableList({
         open={warningOpen}
         onClose={() => setWarningOpen(false)}
         handleDelete={handleDelete}
+      />
+      <TableCreate
+        open={editOpen}
+        onClose={() => {
+          setEditOpen(false);
+          setSelected([]);
+        }}
+        handleEditTable={handleEditTable}
+        edit={tables.filter((item) => item.id === selected[0])[0]}
       />
     </>
   );
