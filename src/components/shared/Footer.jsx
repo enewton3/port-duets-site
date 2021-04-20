@@ -1,57 +1,68 @@
 import { Button, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    position: "fixed",
-    bottom: 0,
-    width: "100vw",
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "space-around",
-    alignItems: "flex-end",
-    textAlign: "center",
-  },
-  give: {},
-  link: {
-    textDecoration: "none",
-  },
-  button: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.dark,
-    },
-  },
-}));
+import EventButton from "../EventButton/EventButton";
+import joinimg from "../../assets/joinbutton.png";
+import program from "../../assets/programbutton.png";
 
 export default function Footer(props) {
   const { currentGuest } = props;
+  const useStyles = makeStyles((theme) => ({
+    footer: {
+      position: "fixed",
+      bottom: 0,
+      width: "95vw",
+      display: "flex",
+      flexFlow: "row wrap",
+      justifyContent: "space-between",
+      alignItems: "center",
+      textAlign: "center",
+      alignSelf: "center",
+      justifySelf: "center",
+      // padding: "0 1vw 1vh 1vw",
+    },
+    buttonContainer: {
+      display: "flex",
+      flexFlow: "column wrap",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    give: {
+      fontFamily: "LaLuxe",
+      alignSelf: "flex-end",
+    },
+    text: {
+      fontFamily: "Libre Baskerville",
+      fontWeight: "bold",
+    },
+    button: { width: "10%", height: "8%" },
+  }));
   const classes = useStyles();
 
   return (
     <footer className={classes.footer}>
-      <div>
-        <Typography>Click to View</Typography>
-        <a className={classes.link} href={currentGuest?.table.zoom_link}>
-          <Button className={classes.button} variant="outlined" color="primary">
-            Program Book
-          </Button>
-        </a>
+      <div className={classes.buttonContainer}>
+        <Typography className={classes.text}>CLICK TO VIEW</Typography>
+        <EventButton
+          width={`${classes.button.width}`}
+          height={classes.button.height}
+          link="https://www.program.com"
+          image={program}
+        />
       </div>
       <Typography className={classes.give}>
         Text 'Friends' To <br />
         XXX.XXX.XXX to give
       </Typography>
-      <div>
-        <Typography>
-          Following the Event <br /> Click to exit and
+      <div className={classes.buttonContainer}>
+        <Typography className={classes.text}>
+          FOLLOWING THE EVENT <br /> CLICK TO EXIT AND
         </Typography>
-        <a className={classes.link} href={currentGuest?.table.zoom_link}>
-          <Button className={classes.button} variant="outlined" color="primary">
-            Join your table
-          </Button>
-        </a>
+        <EventButton
+          width={classes.button.width}
+          height={classes.button.height}
+          link={currentGuest.table.zoom_link}
+          image={joinimg}
+        />
       </div>
     </footer>
   );

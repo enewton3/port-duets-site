@@ -10,7 +10,13 @@ import {
 import React, { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
-  input: {},
+  form: {
+    // display: "flex",
+    // justifyContent: "space-around",
+    // alignItems: "baseline",
+    // width: "100%",
+  },
+  input: { width: "100%", marginTop: "1vh" },
 }));
 
 export default function TableCreate({
@@ -34,6 +40,12 @@ export default function TableCreate({
         table_number: edit.table_number,
         zoom_link: edit.zoom_link,
       });
+    } else {
+      setFormData({
+        table_pin: "",
+        table_number: "",
+        zoom_link: "",
+      });
     }
   }, [edit]);
 
@@ -45,16 +57,30 @@ export default function TableCreate({
     }));
   };
 
+  const handleSubmit = async () => {
+    edit
+      ? await handleEditTable(formData, edit.id)
+      : await handleCreateTable(formData);
+    onClose();
+  };
+
+  const validatePin =
+    String(formData.table_pin).length === 4 ||
+    String(formData.table_pin).length === 0
+      ? true
+      : false;
+
   return (
     <Dialog onClose={onClose} open={open}>
       <DialogTitle>{edit ? <>Edit</> : <>Add</>} A Table</DialogTitle>
       <DialogContent>
-        <form>
+        <form className={classes.form}>
           <TextField
             className={classes.input}
             variant="filled"
             label="Table Number"
             name="table_number"
+            helperText="Must be unique"
             value={formData.table_number}
             onChange={(e) => handleChange(e)}
             required
@@ -65,6 +91,8 @@ export default function TableCreate({
             label="Table Pin"
             name="table_pin"
             value={formData.table_pin}
+            error={!validatePin}
+            helperText="Must be 4 digits, and unique"
             onChange={(e) => handleChange(e)}
             required
           />
@@ -73,6 +101,7 @@ export default function TableCreate({
             variant="filled"
             label="Zoom Link"
             name="zoom_link"
+            helperText="Must be full link, including https://"
             value={formData.zoom_link}
             onChange={(e) => handleChange(e)}
             required
@@ -80,14 +109,7 @@ export default function TableCreate({
         </form>
       </DialogContent>
       <DialogActions>
-        <Button
-          onClick={() => {
-            edit
-              ? handleEditTable(formData, edit.id)
-              : handleCreateTable(formData);
-            onClose();
-          }}
-        >
+        <Button onClick={handleSubmit}>
           {edit ? <>Edit</> : <>Create</>} Table
         </Button>
         <Button variant="outlined" onClick={onClose} autoFocus>

@@ -27,8 +27,8 @@ export default function Table({ currentGuest }) {
     <Layout>
       <div className={classes.event}>
         <EventFrame />
+        <Footer currentGuest={currentGuest} />
       </div>
-      <Footer currentGuest={currentGuest} />
     </Layout>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import logo from "../../assets/cancer_center_logo.png";
+import headerfriends from "../../assets/headerfriendslogo.png";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   logo: { height: "100%" },
-  headerBlurb: { textAlign: "right" },
+  headerBlurb: { textAlign: "right", height: "90%" },
 }));
 
 export default function Header() {
@@ -24,10 +25,15 @@ export default function Header() {
   return (
     <div className={classes.header}>
       <img className={classes.logo} src={logo} alt="MGH cancer center logo" />
-      <Typography className={classes.headerBlurb}>
+      {/* <Typography className={classes.headerBlurb}>
         The Friends of the <br />
         Mass General Cancer Center
-      </Typography>
+      </Typography> */}
+      <img
+        className={classes.headerBlurb}
+        src={headerfriends}
+        alt="Friends of MGH Logo"
+      />
     </div>
   );
 }
