@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import backgroundimg from "../../assets/framebackground.png";
 import donatebutton from "../../assets/donatebutton.png";

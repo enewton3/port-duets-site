@@ -1,11 +1,11 @@
 import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import logo from "../../assets/cancer_center_logo.png";
 import headerfriends from "../../assets/headerfriendslogo.png";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    backgroundColor: "rgb(29,29,27)",
+    backgroundColor: "rgb(0,0,0)",
     height: "10vh",
     width: "100vw",
     position: "fixed",
@@ -14,9 +14,10 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "row wrap",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: "",
   },
   logo: { height: "100%" },
-  headerBlurb: { textAlign: "right", height: "90%" },
+  headerBlurb: { textAlign: "right", height: "80%" },
 }));
 
 export default function Header() {
@@ -25,10 +26,6 @@ export default function Header() {
   return (
     <div className={classes.header}>
       <img className={classes.logo} src={logo} alt="MGH cancer center logo" />
-      {/* <Typography className={classes.headerBlurb}>
-        The Friends of the <br />
-        Mass General Cancer Center
-      </Typography> */}
       <img
         className={classes.headerBlurb}
         src={headerfriends}
