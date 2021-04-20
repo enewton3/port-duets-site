@@ -43,7 +43,6 @@ function App() {
 
   const verifyGuest = async () => {
     const resp = await checkLoggedIn();
-    // console.log(resp);
     setCurrentGuest(resp);
   };
 

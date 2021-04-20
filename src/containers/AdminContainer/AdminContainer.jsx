@@ -8,7 +8,12 @@ import {
   createGuest,
   deleteAllGuests,
 } from "../../services/guests";
-import { showTables, deleteAllTables, editTable } from "../../services/tables";
+import {
+  showTables,
+  deleteAllTables,
+  editTable,
+  createTable,
+} from "../../services/tables";
 
 export default function AdminContainer() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -62,6 +67,19 @@ export default function AdminContainer() {
     setTables(resp);
   }, []);
 
+  const handleCreateTable = async (formData) => {
+    const resp = await createTable(formData);
+    console.log(resp);
+    setTables((prev) => [...prev, resp]);
+    return resp;
+    // if (resp.id) {
+    //   console.log(resp);
+    //   return resp;
+    // } else {
+    //   console.log(resp);
+    // }
+  };
+
   const handleDeleteAllTables = async () => {
     const resp = await deleteAllTables();
     setTables([]);
@@ -84,6 +102,7 @@ export default function AdminContainer() {
       handleDeleteAll={handleDeleteAll}
       tables={tables}
       setTables={setTables}
+      handleCreateTable={handleCreateTable}
       handleDeleteAllTables={handleDeleteAllTables}
       fetchTables={fetchTables}
       handleEditTable={handleEditTable}

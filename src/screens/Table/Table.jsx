@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     width: "100vw",
+    // paddingTop: "10vh",
   },
 }));
 
@@ -27,8 +28,8 @@ export default function Table({ currentGuest }) {
     <Layout>
       <div className={classes.event}>
         <EventFrame />
+        <Footer currentGuest={currentGuest} />
       </div>
-      <Footer currentGuest={currentGuest} />
     </Layout>
   );
 }
