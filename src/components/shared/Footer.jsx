@@ -60,7 +60,7 @@ export default function Footer(props) {
         <EventButton
           width={classes.button.width}
           height={classes.button.height}
-          link={currentGuest.table.zoom_link}
+          link={currentGuest?.table.zoom_link}
           image={joinimg}
         />
       </div>
