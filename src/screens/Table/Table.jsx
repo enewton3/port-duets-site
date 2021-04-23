@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Chat from "../../components/Chat/Chat";
+import ChatButton from "../../components/Chat/ChatButton";
 import EventFrame from "../../components/EventFrame/EventFrame";
 import Footer from "../../components/shared/Footer";
 import Layout from "../../components/shared/Layout";
@@ -19,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Table({ currentGuest }) {
   const classes = useStyles();
   const history = useHistory();
+  const [chatOpen, setChatOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   if (!currentGuest) {
     history.push("/");
@@ -28,8 +32,21 @@ export default function Table({ currentGuest }) {
     <Layout>
       <div className={classes.event}>
         <EventFrame />
-        <Footer currentGuest={currentGuest} />
       </div>
+      <ChatButton
+        chatOpen={chatOpen}
+        setChatOpen={setChatOpen}
+        setAnchorEl={setAnchorEl}
+      />
+
+      <Chat
+        chatOpen={chatOpen}
+        setChatOpen={setChatOpen}
+        currentGuest={currentGuest}
+        anchorEl={anchorEl}
+      />
+
+      <Footer currentGuest={currentGuest} />
     </Layout>
   );
 }
