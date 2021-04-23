@@ -30,16 +30,20 @@ const useStyles = makeStyles(() => ({
 
 export default function GuestList(props) {
   const { guests, setGuests, fetchGuestList, handleDeleteAll } = props;
-  const classes = useStyles();
+  //State stuff
   const [selected, setSelected] = useState([]);
   const [warningOpen, setWarningOpen] = useState(false);
+  //Style import
+  const classes = useStyles();
 
+  //All of the useEffects
   useEffect(() => {
     fetchGuestList();
   }, [fetchGuestList]);
 
   useEffect(() => {}, [guests]);
 
+  //SELECT ITEMS functions
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = guests.map((n) => n.id);
@@ -71,6 +75,7 @@ export default function GuestList(props) {
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
+  //Delete function. Maybe lift this up?
   const handleDelete = () => {
     if (selected.length === guests.length) {
       handleDeleteAll();
