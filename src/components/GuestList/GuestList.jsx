@@ -1,76 +1,49 @@
+//REACT
+import React, { useState, useEffect } from "react";
+
+//MUI
 import {
-  Button,
-  Checkbox,
   Divider,
   makeStyles,
   Table,
   TableBody,
-  TableCell,
   TableHead,
-  TableRow,
-  Tooltip,
-  Typography,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import React, { useState, useEffect } from "react";
-import { deleteGuest } from "../../services/guests";
-import { CSVLink } from "react-csv";
-import DeleteWarn from "../DeleteWarn/DeleteWarn";
 
+//services
+import { deleteGuest } from "../../services/guests";
+
+//Components
+import DeleteWarn from "../DeleteWarn/DeleteWarn";
+import GuestRow from "./GuestRow";
+import GuestListHeader from "./GuestListHeader";
+import GuestTableHead from "./GuestTableHead";
+
+//MUI styles
 const useStyles = makeStyles(() => ({
   root: { width: "100%" },
-  header: {
-    display: "flex",
-    flexFlow: "row wrap",
-    alignItems: "center",
-    justifyContent: "space-around",
-    paddingBottom: "1vh",
-  },
-  listhead: {},
-  actionButtonLink: { textDecoration: "none", color: "black" },
-  actionButton: {
-    height: "50%",
-    margin: "0 1vw 0 1vw",
-  },
-  counter: {
-    background: "black",
-    padding: ".5vh 1vw .5vh 1vw",
-    borderRadius: "10px",
-    color: "white",
-  },
   list: {
     padding: 0,
     overflowX: "scroll",
   },
-  listItem: {
-    display: "flex",
-    flexFlow: "row nowrap",
-    justifyContent: "space-around",
-    width: "100%",
-    fontFamily: "Helvetica",
-  },
-  name: {},
-  email: {
-    justifySelf: "flex-end",
-  },
 }));
 
-export default function GuestList({
-  guests,
-  setGuests,
-  fetchGuestList,
-  handleDeleteAll,
-}) {
-  const classes = useStyles();
+export default function GuestList(props) {
+  const { guests, setGuests, fetchGuestList, handleDeleteAll } = props;
+  //State stuff
   const [selected, setSelected] = useState([]);
   const [warningOpen, setWarningOpen] = useState(false);
+  //Style import
+  const classes = useStyles();
 
+  //All of the useEffects
   useEffect(() => {
     fetchGuestList();
   }, [fetchGuestList]);
 
   useEffect(() => {}, [guests]);
 
+  //SELECT ITEMS functions
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = guests.map((n) => n.id);
@@ -102,6 +75,7 @@ export default function GuestList({
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
+  //Delete function. Maybe lift this up?
   const handleDelete = () => {
     if (selected.length === guests.length) {
       handleDeleteAll();
@@ -117,93 +91,31 @@ export default function GuestList({
 
   return (
     <div className={classes.root}>
-      <div className={classes.header}>
-        <Typography className={classes.listhead} variant="h5">
-          Guests
-        </Typography>
-        <Tooltip title="Total Guests">
-          <Typography className={classes.counter}>{guests.length}</Typography>
-        </Tooltip>
-        <div className={classes.actions}>
-          <Tooltip title="Export CSV File">
-            <CSVLink className={classes.actionButtonLink} data={guests}>
-              <Button className={classes.actionButton} variant="outlined">
-                Export CSV
-              </Button>
-            </CSVLink>
-          </Tooltip>
-          <Tooltip title="Refresh Guests">
-            <Button
-              className={classes.actionButton}
-              onClick={fetchGuestList}
-              variant="outlined"
-            >
-              Refresh
-            </Button>
-          </Tooltip>
-
-          {selected.length > 0 ? (
-            <Tooltip title="Delete Selected">
-              <Button
-                className={classes.actionButton}
-                onClick={() => setWarningOpen(true)}
-                variant="outlined"
-              >
-                <DeleteIcon />
-              </Button>
-            </Tooltip>
-          ) : null}
-        </div>
-      </div>
+      <GuestListHeader
+        selected={selected}
+        fetchGuestList={fetchGuestList}
+        guests={guests}
+        setWarningOpen={setWarningOpen}
+      />
       <Divider />
       <Table stickyHeader className={classes.list} size="small">
         <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                onClick={(e) => handleSelectAllClick(e)}
-                indeterminate={
-                  selected.length > 0 && selected.length < guests.length
-                }
-                checked={guests.length > 0 && selected.length === guests.length}
-              />
-            </TableCell>
-            {/* <TableCell align="center">Guest ID</TableCell> */}
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Table</TableCell>
-            <TableCell align="center">Here?</TableCell>
-          </TableRow>
+          <GuestTableHead
+            selected={selected}
+            guests={guests}
+            handleSelectAllClick={handleSelectAllClick}
+          />
         </TableHead>
         <TableBody>
           {guests.map((guest) => {
             const isItemSelected = isSelected(guest.id);
-
             return (
-              <TableRow
+              <GuestRow
+                guest={guest}
+                isItemSelected={isItemSelected}
+                handleSelect={handleSelect}
                 key={guest.id}
-                hover
-                role="checkbox"
-                selected={isItemSelected}
-              >
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    onClick={(e) => handleSelect(e, guest.id)}
-                    checked={isItemSelected}
-                  />
-                </TableCell>
-                {/* <TableCell align="center">{guest.id}</TableCell> */}
-                <TableCell align="center">
-                  {guest.firstname} {guest.lastname}
-                </TableCell>
-                <TableCell align="center">{guest.email}</TableCell>
-                <TableCell align="center">
-                  {guest.table?.table_number}
-                </TableCell>
-                <TableCell align="center">
-                  {guest.active ? "Yes" : "No"}
-                </TableCell>
-              </TableRow>
+              />
             );
           })}
         </TableBody>

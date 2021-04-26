@@ -3,14 +3,16 @@ import React from "react";
 import EventButton from "../EventButton/EventButton";
 import joinimg from "../../assets/joinbutton.png";
 import program from "../../assets/programbutton.png";
+import { useParams } from "react-router-dom";
 
-export default function Footer(props) {
+export default function EventButtons(props) {
+  const params = useParams();
   const { currentGuest } = props;
   const useStyles = makeStyles((theme) => ({
-    footer: {
+    root: {
       position: "fixed",
       bottom: 0,
-      width: "95vw",
+      width: "100vw",
       display: "flex",
       flexFlow: "row wrap",
       justifyContent: "space-between",
@@ -18,7 +20,7 @@ export default function Footer(props) {
       textAlign: "center",
       alignSelf: "center",
       justifySelf: "center",
-      // padding: "0 1vw 1vh 1vw",
+      // marginBottom: "1vh",
     },
     buttonContainer: {
       display: "flex",
@@ -34,17 +36,19 @@ export default function Footer(props) {
       fontFamily: "Libre Baskerville",
       fontWeight: "bold",
     },
-    button: { width: "10%", height: "8%" },
+    button: {
+      width: "80%",
+      // height: "50%",
+    },
   }));
   const classes = useStyles();
 
   return (
-    <footer className={classes.footer}>
+    <div className={classes.root}>
       <div className={classes.buttonContainer}>
         <Typography className={classes.text}>CLICK TO VIEW</Typography>
         <EventButton
-          width={`${classes.button.width}`}
-          height={classes.button.height}
+          classTEST={classes.button}
           link="https://www.program.com"
           image={program}
         />
@@ -53,17 +57,18 @@ export default function Footer(props) {
         Text 'Friends' To <br />
         XXX.XXX.XXX to give
       </Typography>
-      <div className={classes.buttonContainer}>
-        <Typography className={classes.text}>
-          FOLLOWING THE EVENT <br /> CLICK TO EXIT AND
-        </Typography>
-        <EventButton
-          width={classes.button.width}
-          height={classes.button.height}
-          link={currentGuest.table.zoom_link}
-          image={joinimg}
-        />
-      </div>
-    </footer>
+      {params.id === "500" ? null : (
+        <div className={classes.buttonContainer}>
+          <Typography className={classes.text}>
+            FOLLOWING THE EVENT <br /> CLICK TO EXIT AND
+          </Typography>
+          <EventButton
+            classTEST={classes.button}
+            link={currentGuest?.table.zoom_link}
+            image={joinimg}
+          />
+        </div>
+      )}
+    </div>
   );
 }

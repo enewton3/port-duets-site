@@ -106,6 +106,7 @@ export default function AdminContainer() {
       handleDeleteAllTables={handleDeleteAllTables}
       fetchTables={fetchTables}
       handleEditTable={handleEditTable}
+      currentUser={currentUser}
     />
   ) : (
     <AdminLogin handleLogin={handleLogin} />

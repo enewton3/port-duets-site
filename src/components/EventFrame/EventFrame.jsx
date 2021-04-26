@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
   goldborder: {
     width: "70vw",
     height: "80vh",
-    // backgroundColor: "goldenrod",
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
     backgroundSize: "contain",
@@ -18,13 +17,15 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
-    // padding: "5vh 0 2vh 0",
     "@media (max-width: 900px)": { width: "80vw" },
     "@media (max-width: 650px)": { width: "90vw" },
     "@media (max-width: 450px)": { width: "100vw" },
   },
-  vimeoframe: { width: "80%", marginBottom: "2vh" },
-  button: { width: "17%", height: "8%" },
+  vimeoframe: { width: "80%", maxHeight: "80%", marginBottom: "2vh" },
+  button: {
+    width: "20%",
+    // height: "10%",
+  },
 }));
 
 export default function EventFrame() {
@@ -35,8 +36,7 @@ export default function EventFrame() {
         <VimeoFrame />
       </div>
       <EventButton
-        height={classes.button.height}
-        width={classes.button.width}
+        classTEST={classes.button}
         link="https://www.donate.com"
         image={donatebutton}
       />

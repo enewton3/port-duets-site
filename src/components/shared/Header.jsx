@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "",
+    zIndex: "1000",
   },
   logo: { height: "100%" },
   headerBlurb: { textAlign: "right", height: "80%" },

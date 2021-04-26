@@ -1,42 +1,19 @@
-import {
-  AppBar,
-  Button,
-  makeStyles,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { Button, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import AdminNav from "../../components/AdminNav/AdminNav";
 import GuestCreate from "../../components/GuestCreate/GuestCreate";
 import GuestList from "../../components/GuestList/GuestList";
 import TableCreate from "../../components/TableCreate/TableCreate";
 import TableList from "../../components/TableList/TableList";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import { createTable } from "../../services/tables";
+import CustomChat from "../../components/Chat/Chat";
 
 const useStyles = makeStyles((theme) => ({
-  appbar: {
-    display: "flex",
-    flexFlow: "row nowrap",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "1vh 1vw 1vh 1vw",
-    backgroundColor: theme.palette.secondary.main,
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-  },
-  logoutButton: {
-    color: "white",
-    backgroundColor: theme.palette.secondary.light,
-    borderColor: "white",
-  },
   panelBody: {
     paddingTop: "5vh",
     display: "flex",
     flexFlow: "row wrap",
-    alignItems: "baseline",
     justifyContent: "space-around",
     justifySelf: "center",
     alignSelf: "center",
@@ -49,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: { display: "flex", flexFlow: "column wrap" },
   vimeopaper: {
-    width: "60vw",
+    width: "47vw",
     padding: "2vh 1vw 2vh 1vw",
     maxHeight: "80vh",
     overflowY: "scroll",
@@ -62,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: "47vw",
     padding: "2vh 1vw 2vh 1vw",
-    maxHeight: "80vh",
+    maxHeight: "60vh",
     overflowY: "scroll",
     marginTop: "2vh",
     "@media (max-width: 800px)": {
@@ -85,9 +62,11 @@ export default function AdminPanel(props) {
     handleDeleteAllTables,
     handleEditTable,
     fetchTables,
+    currentUser,
   } = props;
   const [createOpen, setCreateOpen] = useState(false);
   const [createTableOpen, setCreateTableOpen] = useState(false);
+  // const [messages, setMessages] = useState([]);
   const classes = useStyles();
 
   const handleCreateTable = async (formData) => {
@@ -97,24 +76,19 @@ export default function AdminPanel(props) {
 
   return (
     <div>
-      <AppBar className={classes.appbar}>
-        <Link to="/" className={classes.link}>
-          <Button className={classes.link}>
-            <Typography>Duets Event Admin Panel</Typography>
-          </Button>
-        </Link>
-        <Button
-          className={classes.logoutButton}
-          variant="outlined"
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
-      </AppBar>
+      <AdminNav handleLogout={handleLogout} />
 
       <div className={classes.panelBody}>
         <Paper className={classes.vimeopaper}>
           <VimeoFrame />
+        </Paper>
+        <Paper className={classes.paper}>
+          <CustomChat
+            currentUser={currentUser}
+            // messages={messages}
+            // setMessages={setMessages}
+            username={`${currentUser.firstname} ${currentUser.lastname}`}
+          />
         </Paper>
         <div className={classes.container}>
           <Paper className={classes.paper}>
