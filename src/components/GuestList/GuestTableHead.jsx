@@ -1,11 +1,16 @@
-import { Checkbox, makeStyles, TableCell, TableRow } from "@material-ui/core";
+import {
+  Checkbox,
+  // makeStyles,
+  TableCell,
+  TableRow,
+} from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles((theme) => ({}));
+// const useStyles = makeStyles((theme) => ({}));
 
 export default function GuestTableHead(props) {
   const { selected, guests, handleSelectAllClick } = props;
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <TableRow>
       <TableCell padding="checkbox">

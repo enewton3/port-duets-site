@@ -1,20 +1,19 @@
 import { Button, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import AdminNav from "../../components/AdminNav/AdminNav";
-import Chat from "../../components/Chat/Chat";
 import GuestCreate from "../../components/GuestCreate/GuestCreate";
 import GuestList from "../../components/GuestList/GuestList";
 import TableCreate from "../../components/TableCreate/TableCreate";
 import TableList from "../../components/TableList/TableList";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import { createTable } from "../../services/tables";
+import CustomChat from "../../components/Chat/Chat";
 
 const useStyles = makeStyles((theme) => ({
   panelBody: {
     paddingTop: "5vh",
     display: "flex",
     flexFlow: "row wrap",
-    // alignItems: "baseline",
     justifyContent: "space-around",
     justifySelf: "center",
     alignSelf: "center",
@@ -84,10 +83,11 @@ export default function AdminPanel(props) {
           <VimeoFrame />
         </Paper>
         <Paper className={classes.paper}>
-          <Chat
+          <CustomChat
             currentUser={currentUser}
             // messages={messages}
             // setMessages={setMessages}
+            username={`${currentUser.firstname} ${currentUser.lastname}`}
           />
         </Paper>
         <div className={classes.container}>

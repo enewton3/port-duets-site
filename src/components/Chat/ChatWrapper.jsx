@@ -3,7 +3,12 @@ import { Grow, makeStyles, Paper, Popper } from "@material-ui/core";
 import React from "react";
 
 export default function ChatWrapper(props) {
-  const { children, chatOpen, anchorEl, handleClose } = props;
+  const {
+    children,
+    chatOpen,
+    anchorEl,
+    // handleClose
+  } = props;
 
   const useStyles = makeStyles((theme) => ({
     popper: {

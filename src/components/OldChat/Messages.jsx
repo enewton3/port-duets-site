@@ -23,8 +23,8 @@ export default function Messages({ messages, currentMember }) {
     <div className={classes.messagesContainer}>
       {messages.length < 1 ? (
         <div>
-          Send a message to begin a conversation with our support staff. <br />
-          The name you used to sign up is the name that will be displayed.
+          Send a message to begin a conversation with our support staff. The
+          name you used to sign up is the name that will be displayed.
         </div>
       ) : null}
       {messages.map((message, index) => {

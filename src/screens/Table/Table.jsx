@@ -1,12 +1,15 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Chat from "../../components/Chat/Chat";
+// import Chat from "../../components/Chat/Chat";
 import ChatButton from "../../components/Chat/ChatButton";
 import ChatWrapper from "../../components/Chat/ChatWrapper";
 import EventFrame from "../../components/EventFrame/EventFrame";
-import Footer from "../../components/shared/Footer";
-import Layout from "../../components/shared/Layout";
+// import Footer from "../../components/shared/EventButtons";
+import CustomChat from "../../components/Chat/Chat";
+import EventButtons from "../../components/shared/EventButtons";
+import Sponsors from "../../components/Sponsors/Sponsors";
+import Header from "../../components/shared/Header";
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -15,7 +18,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     width: "100vw",
-    // paddingTop: "10vh",
+    // height: "100%",
+    paddingTop: "10vh",
+    paddingBottom: "10vh",
   },
   chatButton: {
     // display: "flex",
@@ -42,9 +47,12 @@ export default function Table({ currentGuest }) {
   };
 
   return (
-    <Layout>
+    <>
+      <Header />
       <div className={classes.event}>
         <EventFrame />
+        <EventButtons currentGuest={currentGuest} />
+        <Sponsors />
       </div>
       <div className={classes.chatButton}>
         <ChatButton
@@ -58,15 +66,10 @@ export default function Table({ currentGuest }) {
         anchorEl={anchorEl}
         handleClose={handleClose}
       >
-        <Chat
-          setChatOpen={setChatOpen}
-          currentGuest={currentGuest}
-          // messages={messages}
-          // setMessages={setMessages}
+        <CustomChat
+          username={`${currentGuest.guest.firstname} ${currentGuest.guest.lastname}`}
         />
       </ChatWrapper>
-
-      <Footer currentGuest={currentGuest} />
-    </Layout>
+    </>
   );
 }
