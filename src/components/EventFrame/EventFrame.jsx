@@ -7,8 +7,8 @@ import EventButton from "../EventButton/EventButton";
 
 const useStyles = makeStyles((theme) => ({
   goldborder: {
-    width: "70vw",
-    height: "80vh",
+    width: "65vw",
+    height: "75vh",
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
     backgroundSize: "contain",
@@ -17,14 +17,23 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
+    textAlign: "center",
+    // margin: "0 auto",
     "@media (max-width: 900px)": { width: "80vw" },
     "@media (max-width: 650px)": { width: "90vw" },
     "@media (max-width: 450px)": { width: "100vw" },
   },
   vimeoframe: { width: "80%", maxHeight: "80%", marginBottom: "2vh" },
+  buttonContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+  },
   button: {
-    width: "20%",
-    // height: "10%",
+    width: "25%",
+    // alignSelf: "center",
+    // justifySelf: "center",
+    // margin: "0 auto",
   },
 }));
 
@@ -35,11 +44,13 @@ export default function EventFrame() {
       <div className={classes.vimeoframe}>
         <VimeoFrame />
       </div>
-      <EventButton
-        classTEST={classes.button}
-        link="https://www.donate.com"
-        image={donatebutton}
-      />
+      <div className={classes.buttonContainer}>
+        <EventButton
+          classTEST={classes.button}
+          link="https://www.donate.com"
+          image={donatebutton}
+        />
+      </div>
     </div>
   );
 }

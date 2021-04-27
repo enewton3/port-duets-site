@@ -7,7 +7,7 @@ import TableCreate from "../../components/TableCreate/TableCreate";
 import TableList from "../../components/TableList/TableList";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import { createTable } from "../../services/tables";
-import CustomChat from "../../components/Chat/Chat";
+// import CustomChat from "../../components/Chat/Chat";
 
 const useStyles = makeStyles((theme) => ({
   panelBody: {
@@ -76,19 +76,19 @@ export default function AdminPanel(props) {
 
   return (
     <div>
-      <AdminNav handleLogout={handleLogout} />
+      <AdminNav handleLogout={handleLogout} currentUser={currentUser} />
 
       <div className={classes.panelBody}>
         <Paper className={classes.vimeopaper}>
           <VimeoFrame />
         </Paper>
         <Paper className={classes.paper}>
-          <CustomChat
+          {/* <CustomChat
             currentUser={currentUser}
             // messages={messages}
             // setMessages={setMessages}
             username={`${currentUser.firstname} ${currentUser.lastname}`}
-          />
+          /> */}
         </Paper>
         <div className={classes.container}>
           <Paper className={classes.paper}>

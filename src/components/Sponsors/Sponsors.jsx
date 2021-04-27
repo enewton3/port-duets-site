@@ -4,7 +4,7 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
   sponsors: {
     fontFamily: "Libre Baskerville",
-    marginTop: "10vh",
+    marginTop: "13vh",
     textAlign: "center",
   },
   bigHeader: {
@@ -49,7 +49,6 @@ export default function Sponsors() {
       <p>Shawn and Sarah Haviland</p>
       <p>Peggy Scott</p>
       <p>Vincent and Alicia Wolfington</p>
-      <Divider />
     </div>
   );
 }

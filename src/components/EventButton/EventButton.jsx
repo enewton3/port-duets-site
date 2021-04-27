@@ -7,13 +7,14 @@ export default function EventButton(props) {
   const useStyles = makeStyles((theme) => ({
     link: {
       textDecoration: "none",
+    },
+    image: {
       height: "100%",
       width: "100%",
       "&:hover": {
         boxShadow: "0px 0px 15px black",
       },
     },
-    image: { height: "100%", width: "100%" },
   }));
 
   const classes = useStyles();

@@ -1,4 +1,4 @@
-import PubNub from "pubnub";
+// import PubNub from "pubnub";
 import { PubNubProvider } from "pubnub-react";
 import {
   Chat,
@@ -9,26 +9,21 @@ import {
   // useChannels,
 } from "@pubnub/react-chat-components";
 // import { useState } from "react";
-import {
-  // pubnub,
-  welcomeMsgs,
-} from "../../services/chatconfig";
+import { pubnub, welcomeMsgs } from "../../services/chatconfig";
 
-export default function CustomChat({ username }) {
+export default function GuestChat({ username }) {
   // const [client, setClient] = useState(pubnub(username));
-  const client = new PubNub({
-    publishKey: process.env.REACT_APP_PUBNUB_PUB_KEY,
-    subscribeKey: process.env.REACT_APP_PUBNUB_SUB_KEY,
-    uuid: username,
-  });
-  const currentChannel = `Channel-Support`;
+  const client = pubnub(username);
+  const currentChannel = `${username.split(" ")[1]}-Support`;
   // const theme = "dark";
   // const channels = ["support-1", "support-2"];
   // const [messages, setMessages] = useState([]);
   // console.log(channels);
   // console.log(pubnub);
   // const [channels, fetchPage, total, error] = useChannels(pubnub);
-  console.log(client);
+  // console.log(client);
+  // console.log(currentChannel);
+
   return (
     <>
       {/* {`Hello ${username}`} */}
