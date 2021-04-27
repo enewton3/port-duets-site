@@ -2,12 +2,13 @@ import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ChatButton from "../../components/Chat/ChatButton";
-import ChatWrapper from "../../components/Chat/ChatWrapper";
 import EventFrame from "../../components/EventFrame/EventFrame";
 import EventButtons from "../../components/shared/EventButtons";
 import Sponsors from "../../components/Sponsors/Sponsors";
 import Header from "../../components/shared/Header";
 import GuestChat from "../../components/Chat/GuestChat";
+import PopupChatWrapper from "../../components/Chat/PopupChatWrapper";
+import PubnubChatWrapper from "../../components/Chat/PubnubChatWrapper";
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -39,6 +40,8 @@ export default function Table({ currentGuest }) {
     setChatOpen(false);
   };
 
+  const chatUsername = `${currentGuest?.guest.firstname} ${currentGuest?.guest.lastname}`;
+
   return (
     <>
       <Header />
@@ -54,15 +57,15 @@ export default function Table({ currentGuest }) {
           setAnchorEl={setAnchorEl}
         />
       </div>
-      <ChatWrapper
+      <PopupChatWrapper
         chatOpen={chatOpen}
         anchorEl={anchorEl}
         handleClose={handleClose}
       >
-        <GuestChat
-          username={`${currentGuest?.guest.firstname} ${currentGuest?.guest.lastname}`}
-        />
-      </ChatWrapper>
+        <PubnubChatWrapper username={chatUsername}>
+          <GuestChat username={chatUsername} />
+        </PubnubChatWrapper>
+      </PopupChatWrapper>
     </>
   );
 }
