@@ -1,5 +1,4 @@
 // import PubNub from "pubnub";
-import { PubNubProvider } from "pubnub-react";
 import {
   Chat,
   MessageList,
