@@ -1,15 +1,13 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-// import Chat from "../../components/Chat/Chat";
 import ChatButton from "../../components/Chat/ChatButton";
 import ChatWrapper from "../../components/Chat/ChatWrapper";
 import EventFrame from "../../components/EventFrame/EventFrame";
-// import Footer from "../../components/shared/EventButtons";
-import CustomChat from "../../components/Chat/Chat";
 import EventButtons from "../../components/shared/EventButtons";
 import Sponsors from "../../components/Sponsors/Sponsors";
 import Header from "../../components/shared/Header";
+import GuestChat from "../../components/Chat/GuestChat";
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -17,14 +15,11 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
-    width: "100vw",
-    // height: "100%",
-    paddingTop: "10vh",
-    paddingBottom: "10vh",
+    // width: "100vw",
+    paddingTop: "12vh",
+    paddingBottom: "12vh",
   },
   chatButton: {
-    // display: "flex",
-    // flexFlow: "column wrap",
     position: "absolute",
     right: 0,
     top: "10vh",
@@ -66,7 +61,7 @@ export default function Table({ currentGuest }) {
         anchorEl={anchorEl}
         handleClose={handleClose}
       >
-        <CustomChat
+        <GuestChat
           username={`${currentGuest.guest.firstname} ${currentGuest.guest.lastname}`}
         />
       </ChatWrapper>

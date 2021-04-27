@@ -20,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.light,
     borderColor: "white",
   },
+  welcome: { color: "white" },
 }));
 
-export default function AdminNav({ handleLogout }) {
+export default function AdminNav({ handleLogout, currentUser }) {
   const classes = useStyles();
   return (
     <AppBar className={classes.appbar}>
@@ -31,6 +32,11 @@ export default function AdminNav({ handleLogout }) {
           <Typography>Duets Event Admin Panel</Typography>
         </Button>
       </Link>
+      {currentUser ? (
+        <Typography className={classes.welcome}>
+          Hi {currentUser.firstname}!
+        </Typography>
+      ) : null}
       <Button
         className={classes.logoutButton}
         variant="outlined"
