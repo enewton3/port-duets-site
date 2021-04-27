@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
-    // width: "100vw",
     paddingTop: "12vh",
     paddingBottom: "12vh",
   },
@@ -31,7 +30,6 @@ export default function Table({ currentGuest }) {
   const history = useHistory();
   const [chatOpen, setChatOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [messages, setMessages] = useState([]);
 
   if (!currentGuest) {
     history.push("/");
@@ -62,7 +60,7 @@ export default function Table({ currentGuest }) {
         handleClose={handleClose}
       >
         <GuestChat
-          username={`${currentGuest.guest.firstname} ${currentGuest.guest.lastname}`}
+          username={`${currentGuest?.guest.firstname} ${currentGuest?.guest.lastname}`}
         />
       </ChatWrapper>
     </>
