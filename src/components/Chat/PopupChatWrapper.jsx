@@ -2,7 +2,7 @@
 import { Grow, makeStyles, Paper, Popper } from "@material-ui/core";
 import React from "react";
 
-export default function ChatWrapper(props) {
+export default function PopupChatWrapper(props) {
   const {
     children,
     chatOpen,
@@ -14,6 +14,7 @@ export default function ChatWrapper(props) {
     popper: {
       display: chatOpen ? "block" : "none",
       maxHeight: "40vh",
+      maxWidth: "30vw",
     },
   }));
 

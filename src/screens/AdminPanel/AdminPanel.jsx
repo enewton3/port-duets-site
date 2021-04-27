@@ -1,13 +1,14 @@
 import { Button, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import AdminNav from "../../components/AdminNav/AdminNav";
+import AdminChat from "../../components/Chat/AdminChat";
+import PubnubChatWrapper from "../../components/Chat/PubnubChatWrapper";
 import GuestCreate from "../../components/GuestCreate/GuestCreate";
 import GuestList from "../../components/GuestList/GuestList";
 import TableCreate from "../../components/TableCreate/TableCreate";
 import TableList from "../../components/TableList/TableList";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import { createTable } from "../../services/tables";
-// import CustomChat from "../../components/Chat/Chat";
 
 const useStyles = makeStyles((theme) => ({
   panelBody: {
@@ -74,6 +75,8 @@ export default function AdminPanel(props) {
     return resp;
   };
 
+  const chatUsername = `${currentUser.firstname} ${currentUser.lastname}`;
+
   return (
     <div>
       <AdminNav handleLogout={handleLogout} currentUser={currentUser} />
@@ -83,12 +86,9 @@ export default function AdminPanel(props) {
           <VimeoFrame />
         </Paper>
         <Paper className={classes.paper}>
-          {/* <CustomChat
-            currentUser={currentUser}
-            // messages={messages}
-            // setMessages={setMessages}
-            username={`${currentUser.firstname} ${currentUser.lastname}`}
-          /> */}
+          <PubnubChatWrapper username={chatUsername}>
+            <AdminChat username={chatUsername} />
+          </PubnubChatWrapper>
         </Paper>
         <div className={classes.container}>
           <Paper className={classes.paper}>
