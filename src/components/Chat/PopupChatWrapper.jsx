@@ -13,8 +13,8 @@ export default function PopupChatWrapper(props) {
   const useStyles = makeStyles((theme) => ({
     popper: {
       display: chatOpen ? "block" : "none",
-      maxHeight: "40vh",
-      maxWidth: "30vw",
+      // maxHeight: "40vh",
+      // maxWidth: "30vw",
     },
     paper: { maxHeight: "40vh" },
   }));
@@ -27,7 +27,7 @@ export default function PopupChatWrapper(props) {
       role={undefined}
       transition
       disablePortal
-      // keepMounted
+      keepMounted
       className={classes.popper}
       placement="left-start"
     >

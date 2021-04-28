@@ -39,8 +39,6 @@ export default function Table({ currentGuest }) {
     setChatOpen(false);
   };
 
-  const chatUsername = `${currentGuest?.guest.firstname} ${currentGuest?.guest.lastname}`;
-
   return (
     <>
       <Header />
@@ -62,7 +60,7 @@ export default function Table({ currentGuest }) {
         handleClose={handleClose}
       >
         {/* <PubnubChatWrapper username={chatUsername}> */}
-        <GuestChat username={chatUsername} />
+        <GuestChat currentGuest={currentGuest} />
         {/* </PubnubChatWrapper> */}
       </PopupChatWrapper>
     </>
