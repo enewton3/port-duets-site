@@ -1,33 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
-  Chat,
-  MessageList,
-  MessageInput,
-  // ChannelList,
-  // MemberList,
-  // useChannels,
-} from "@pubnub/react-chat-components";
-import { welcomeMsgs } from "../../services/chatconfig";
-// import { useEffect } from "react";
+  appSetting,
+  createChatUser,
+  getChatUser,
+  loginChat,
+  // pubnub,
+  // welcomeMsgs,
+} from "../../services/chatconfig";
+// import // FormControl,
+// InputLabel,
+// makeStyles,
+// MenuItem,
+// Select,
+// "@material-ui/core";
+// import { PubNubConsumer } from "pubnub-react";
+// import Messages from "./Messages";
+import {
+  // CometChatConversationList,
+  CometChatConversationListWithMessages,
+  // CometChatUI,
+  // CometChatUserListWithMessages,
+} from "../CometChatWorkspace/src";
 
-export default function AdminChat({ username }) {
-  // const [channels, fetchPage, total, error] = useChannels();
-  // useEffect(() => {
-  //   const getPage = async () => {
-  //     const resp = await fetchPage();
-  //     console.log("resp", resp);
-  //   };
-  //   getPage();
-  // }, []);
-  // console.log(channels);
+// const useStyles = makeStyles(() => ({
+//   channelList: {
+//     width: "30%",
+//   },
+//   select: {
+//     width: "50%",
+//   },
+// }));
+
+export default function AdminChat({ username, guests }) {
+  // const classes = useStyles();
+  // const [client, setClient] = useState();
+  // const [chatUser, setChatUser] = useState();
+
+  useEffect(() => {
+    appSetting();
+    if (getChatUser(username)) {
+      loginChat(username);
+      // setChatUser(resp);
+    } else {
+      createChatUser(username);
+      loginChat(username);
+      // setChatUser(resp);
+    }
+
+    // setClient(resp);
+  }, [username]);
+
   return (
-    <>
-      {`Hello ${username}`}
-      <Chat>
-        {/* <ChannelList channels={channels} /> */}
-        <MessageList welcomeMessages={welcomeMsgs} />
-        <MessageInput />
-      </Chat>
-    </>
+    <div style={{ width: "100%", height: "100%" }}>
+      <CometChatConversationListWithMessages />
+    </div>
   );
 }

@@ -18,10 +18,7 @@ export default function EventButtons(props) {
       justifyContent: "space-between",
       alignItems: "flex-end",
       textAlign: "center",
-      // maxHeight: "10vh",
       marginBottom: "1.5vh",
-      // backgroundColor: theme.palette.primary.main,
-      // boxShadow: "0px 0px 8px black",
     },
     buttonContainer: {
       display: "flex",
@@ -35,23 +32,20 @@ export default function EventButtons(props) {
     },
     give: {
       fontFamily: "LaLuxe",
-      fontSize: "1.08rem",
-      // alignSelf: "flex-end",
-      backgroundColor: theme.palette.primary.main,
-      boxShadow: "0px 0px 8px black",
+      fontSize: "2.5rem",
+      // backgroundColor: theme.palette.primary.main,
+      // boxShadow: "0px 0px 8px black",
       padding: "1vh 1vw 1vh 1vw",
     },
     text: {
       fontFamily: "Libre Baskerville",
       fontWeight: "bold",
-      fontSize: ".9rem",
+      fontSize: "2rem",
+      paddingBottom: "1vh",
     },
     button: {
-      width: "70%",
-      // "&:hover": {
-      //   boxShadow: "0px 0px 15px black",
-      // },
-      // height: "50%",
+      width: "15vw",
+      height: "6vh",
     },
   }));
   const classes = useStyles();
@@ -67,13 +61,14 @@ export default function EventButtons(props) {
         />
       </div>
       <Typography className={classes.give}>
-        Text 'Friends' To <br />
+        Text 'Duets' To <br />
         XXX.XXX.XXX to give
       </Typography>
       {params.id === "500" ? null : (
         <div className={classes.buttonContainer}>
           <Typography className={classes.text}>
-            FOLLOWING THE EVENT <br /> CLICK TO EXIT AND
+            FOLLOWING <br />
+            THE EVENT <br /> CLICK TO EXIT
           </Typography>
           <EventButton
             classTEST={classes.button}

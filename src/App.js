@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     color: "white",
     width: "100vw",
     height: "100vh",

@@ -8,7 +8,6 @@ import Sponsors from "../../components/Sponsors/Sponsors";
 import Header from "../../components/shared/Header";
 import GuestChat from "../../components/Chat/GuestChat";
 import PopupChatWrapper from "../../components/Chat/PopupChatWrapper";
-import PubnubChatWrapper from "../../components/Chat/PubnubChatWrapper";
 
 const useStyles = makeStyles((theme) => ({
   event: {
@@ -21,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   chatButton: {
     position: "absolute",
-    right: 0,
-    top: "10vh",
+    right: "1vw",
+    top: "11vh",
   },
 }));
 
@@ -62,9 +61,9 @@ export default function Table({ currentGuest }) {
         anchorEl={anchorEl}
         handleClose={handleClose}
       >
-        <PubnubChatWrapper username={chatUsername}>
-          <GuestChat username={chatUsername} />
-        </PubnubChatWrapper>
+        {/* <PubnubChatWrapper username={chatUsername}> */}
+        <GuestChat username={chatUsername} />
+        {/* </PubnubChatWrapper> */}
       </PopupChatWrapper>
     </>
   );

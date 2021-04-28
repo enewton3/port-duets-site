@@ -2,7 +2,6 @@ import { Button, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import AdminNav from "../../components/AdminNav/AdminNav";
 import AdminChat from "../../components/Chat/AdminChat";
-import PubnubChatWrapper from "../../components/Chat/PubnubChatWrapper";
 import GuestCreate from "../../components/GuestCreate/GuestCreate";
 import GuestList from "../../components/GuestList/GuestList";
 import TableCreate from "../../components/TableCreate/TableCreate";
@@ -12,7 +11,7 @@ import { createTable } from "../../services/tables";
 
 const useStyles = makeStyles((theme) => ({
   panelBody: {
-    paddingTop: "5vh",
+    paddingTop: "10vh",
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "space-around",
@@ -86,9 +85,9 @@ export default function AdminPanel(props) {
           <VimeoFrame />
         </Paper>
         <Paper className={classes.paper}>
-          <PubnubChatWrapper username={chatUsername}>
-            <AdminChat username={chatUsername} />
-          </PubnubChatWrapper>
+          {/* <PubnubChatWrapper username={chatUsername}> */}
+          <AdminChat username={chatUsername} guests={guests} />
+          {/* </PubnubChatWrapper> */}
         </Paper>
         <div className={classes.container}>
           <Paper className={classes.paper}>
