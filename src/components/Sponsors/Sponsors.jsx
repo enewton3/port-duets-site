@@ -4,7 +4,7 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
   sponsors: {
     fontFamily: "Libre Baskerville",
-    marginTop: "13vh",
+    marginTop: "17vh",
     textAlign: "center",
   },
   bigHeader: {

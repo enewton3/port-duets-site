@@ -1,11 +1,10 @@
-import { Avatar, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   messagesContainer: {
     border: "2px solid hotpink",
     width: "100%",
-    // maxHeight: "30vh",
   },
   message: {
     border: "2px solid black",
@@ -19,15 +18,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Messages({ messages, currentMember }) {
   const classes = useStyles();
 
+  console.log(messages);
   return (
     <div className={classes.messagesContainer}>
-      {messages.length < 1 ? (
+      {/* {messages.length < 1 ? (
         <div>
           Send a message to begin a conversation with our support staff. <br />
           The name you used to sign up is the name that will be displayed.
         </div>
-      ) : null}
-      {messages.map((message, index) => {
+      ) : null} */}
+      {/* {messages.map((message, index) => {
         const { member, text } = message;
         // const messageFromMe = member.id === currentMember.id;
         return (
@@ -49,7 +49,7 @@ export default function Messages({ messages, currentMember }) {
             <Typography>{text}</Typography>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }

@@ -16,6 +16,7 @@ export default function PopupChatWrapper(props) {
       maxHeight: "40vh",
       maxWidth: "30vw",
     },
+    paper: { maxHeight: "40vh" },
   }));
 
   const classes = useStyles();
@@ -26,7 +27,7 @@ export default function PopupChatWrapper(props) {
       role={undefined}
       transition
       disablePortal
-      keepMounted
+      // keepMounted
       className={classes.popper}
       placement="left-start"
     >
@@ -39,7 +40,7 @@ export default function PopupChatWrapper(props) {
           }}
         >
           {/* <ClickAwayListener onClickAway={handleClose}> */}
-          <Paper>{children}</Paper>
+          <Paper className={classes.paper}>{children}</Paper>
           {/* </ClickAwayListener> */}
         </Grow>
       )}

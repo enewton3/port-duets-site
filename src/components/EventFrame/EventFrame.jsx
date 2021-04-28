@@ -7,27 +7,34 @@ import EventButton from "../EventButton/EventButton";
 
 const useStyles = makeStyles((theme) => ({
   goldborder: {
-    width: "65vw",
-    height: "75vh",
+    width: "60vw",
+    height: "70vh",
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-    display: "flex",
-    flexFlow: "column wrap",
+    // display: "flex",
+    // flexFlow: "column wrap",
+    display: "grid",
+    gridTemplateRows: "1 2 3",
+    gridTemplateColumns: "1",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyItems: "center",
     textAlign: "center",
     // margin: "0 auto",
-    aspectRatio: "16/9",
+    // aspectRatio: "16/9",
     "@media (max-width: 900px)": { width: "80vw" },
     "@media (max-width: 650px)": { width: "90vw" },
     "@media (max-width: 450px)": { width: "100vw" },
   },
+  spacer: {
+    width: "100%",
+    height: "5%",
+  },
   vimeoframe: {
-    width: "80%",
-    maxHeight: "80%",
-    paddingTop: "5vh",
+    width: "85%",
+    height: "73%",
+    // paddingTop: "5vh",
     aspectRatio: "16/9",
     // marginBottom: "2vh",
     // justifySelf: "flex-end",
@@ -36,10 +43,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    paddingBottom: "2vh",
+    // paddingBottom: "2vh",
   },
   button: {
-    width: "15%",
+    width: "10vw",
     // alignSelf: "center",
     // justifySelf: "center",
     // margin: "0 auto",
@@ -50,6 +57,7 @@ export default function EventFrame() {
   const classes = useStyles();
   return (
     <div className={classes.goldborder}>
+      {/* <div className={classes.spacer}></div> */}
       <div className={classes.vimeoframe}>
         <VimeoFrame />
       </div>

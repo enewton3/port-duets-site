@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "row wrap",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "",
+    // padding: "0 1vw 0",
     zIndex: "1000",
   },
-  logo: { height: "100%" },
-  headerBlurb: { textAlign: "right", height: "80%" },
+  logo: { height: "100%", paddingLeft: "2vw" },
+  headerBlurb: { textAlign: "right", height: "80%", paddingRight: "2vw" },
 }));
 
 export default function Header() {
