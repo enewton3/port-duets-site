@@ -74,8 +74,6 @@ export default function AdminPanel(props) {
     return resp;
   };
 
-  const chatUsername = `${currentUser.firstname} ${currentUser.lastname}`;
-
   return (
     <div>
       <AdminNav handleLogout={handleLogout} currentUser={currentUser} />
@@ -86,7 +84,7 @@ export default function AdminPanel(props) {
         </Paper>
         <Paper className={classes.paper}>
           {/* <PubnubChatWrapper username={chatUsername}> */}
-          <AdminChat username={chatUsername} guests={guests} />
+          <AdminChat currentUser={currentUser} />
           {/* </PubnubChatWrapper> */}
         </Paper>
         <div className={classes.container}>

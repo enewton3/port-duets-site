@@ -1,25 +1,15 @@
-// import { useState } from "react";
-// import { welcomeMsgs } from "../../services/chatconfig";
-// import ClientChatWidget from "../ClientChatWidget";
+import React from "react";
+import {
+  // CometChatConversationListWithMessages,
+  CometChatUserListWithMessages,
+} from "../CometChatWorkspace/src";
+import CometChatWrapper from "./CometChatWrapper";
 
-export default function GuestChat({ username }) {
-  // const currentChannel = `${username.split(" ")[1]}-Support`;
-
+export default function GuestChat({ currentGuest }) {
   return (
-    <>
-      {`Hello ${username}`}
-      {/* <Chat
-        currentChannel={currentChannel}
-        onError={(error) => {
-          console.log(error);
-        }}
-        onPresence={(e) => {
-          console.log(e);
-        }}
-      >
-        <MessageList welcomeMessages={welcomeMsgs} />
-        <MessageInput />
-      </Chat> */}
-    </>
+    <CometChatWrapper currentGuest={currentGuest}>
+      {/* <CometChatConversationListWithMessages /> */}
+      <CometChatUserListWithMessages />
+    </CometChatWrapper>
   );
 }

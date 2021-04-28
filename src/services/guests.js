@@ -58,6 +58,11 @@ export const createAndUpdate = async (formData) => {
   return updatedGuest.data;
 };
 
+export const updateGuest = async (id, payload) => {
+  const resp = await api.put(`duets_guests/${id}`, { duets_guest: payload });
+  return resp.data;
+};
+
 export const removeToken = () => {
   localStorage.removeItem("guest-token");
 };

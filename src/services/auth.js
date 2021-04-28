@@ -1,6 +1,5 @@
 import api from "./apiconfig";
 
-
 export const loginUser = async (loginData) => {
   const resp = await api.post("/auth/login", { authentication: loginData });
   localStorage.setItem("authToken", resp.data.token);
@@ -25,6 +24,12 @@ export const verifyUser = async () => {
     return resp.data;
   }
   return null;
+};
+
+export const updateUser = async (id, payload) => {
+  const resp = await api.put(`/users/${id}`, { user: payload });
+  console.log(resp);
+  return resp.data.user;
 };
 
 export const removeToken = () => {

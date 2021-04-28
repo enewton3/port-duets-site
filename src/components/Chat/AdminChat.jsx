@@ -1,26 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
+// import {
+//   appSetting,
+//   createChatUser,
+//   getChatUser,
+//   loginChat,
+// } from "../../services/chatconfig";
+// import { makeStyles } from "@material-ui/core";
 import {
-  appSetting,
-  createChatUser,
-  getChatUser,
-  loginChat,
-  // pubnub,
-  // welcomeMsgs,
-} from "../../services/chatconfig";
-// import // FormControl,
-// InputLabel,
-// makeStyles,
-// MenuItem,
-// Select,
-// "@material-ui/core";
-// import { PubNubConsumer } from "pubnub-react";
-// import Messages from "./Messages";
-import {
-  // CometChatConversationList,
-  CometChatConversationListWithMessages,
-  // CometChatUI,
-  // CometChatUserListWithMessages,
+  // CometChatConversationListWithMessages,
+  // CometChatMessages,
+  CometChatUserListWithMessages,
 } from "../CometChatWorkspace/src";
+import CometChatWrapper from "./CometChatWrapper";
 
 // const useStyles = makeStyles(() => ({
 //   channelList: {
@@ -31,28 +22,35 @@ import {
 //   },
 // }));
 
-export default function AdminChat({ username, guests }) {
-  // const classes = useStyles();
-  // const [client, setClient] = useState();
-  // const [chatUser, setChatUser] = useState();
+function AdminChat({ currentUser }) {
+  //if currentUser has an chat AuthToken, log them in
 
-  useEffect(() => {
-    appSetting();
-    if (getChatUser(username)) {
-      loginChat(username);
-      // setChatUser(resp);
-    } else {
-      createChatUser(username);
-      loginChat(username);
-      // setChatUser(resp);
-    }
-
-    // setClient(resp);
-  }, [username]);
+  // const chatSetup = (username) => {
+  //       const app = appSetting();
+  //       const userExists = getChatUser(username);
+  //       if (userExists) {
+  //         const user = loginChat(username);
+  //         console.log("logged in", user);
+  //         // setChatUser(user);
+  //       } else {
+  //         createChatUser(username);
+  //         const user = loginChat(username);
+  //         // setChatUser(user);
+  //         console.log("created and logged in", user);
+  //       }
+  //       console.log(app);
+  //       // setClient(app);
+  //     };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <CometChatConversationListWithMessages />
-    </div>
+    <CometChatWrapper currentUser={currentUser}>
+      <div style={{ width: "100%", height: "100%" }}>
+        {/* <CometChatConversationListWithMessages /> */}
+        {/* <CometChatMessages chatWithUser={"SUPERHERO1"} /> */}
+        <CometChatUserListWithMessages />
+      </div>
+    </CometChatWrapper>
   );
 }
+
+export default AdminChat;

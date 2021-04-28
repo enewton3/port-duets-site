@@ -1,32 +1,5 @@
 import { CometChat } from "@cometchat-pro/chat";
-// import PubNub from "pubnub";
-
-// export const pubnub = (username) => {
-//   const client = new PubNub({
-//     publishKey: process.env.REACT_APP_PUBNUB_PUB_KEY,
-//     subscribeKey: process.env.REACT_APP_PUBNUB_SUB_KEY,
-//     uuid: username,
-//   });
-//   return client;
-// };
-
-// export const welcomeMsgs = [
-//   {
-//     message: {
-//       type: "welcome",
-//       text:
-//         "Send a message to begin a conversation with our support staff. The name you used to sign up is the name that will be displayed.",
-//       sender: {
-//         profileUrl: "",
-//         id: "Evyn Newton",
-//         eTag: "",
-//         updated: "",
-//       },
-//     },
-//     uuid: "Evyn Newton",
-//     timetoken: "16165836271766362",
-//   },
-// ];
+import axios from "axios";
 const appID = process.env.REACT_APP_COMETCHAT_APP_ID;
 const authKey = process.env.REACT_APP_COMETCHAT_AUTH_KEY;
 const region = "us";
@@ -50,7 +23,7 @@ export const appSetting = () => {
   return client;
 };
 
-export const loginChat = (username) => {
+export const loginChatWithUsername = (username) => {
   const uid = username.split(" ").join("");
   // const uid = "SUPERHERO1";
 
@@ -66,24 +39,42 @@ export const loginChat = (username) => {
   );
 };
 
-export const createChatUser = (username) => {
-  const uid = username.split(" ").join("");
-  const name = username;
-
-  const user = { uid: uid, name: name };
-  // const user = new CometChat.user(uid);
-
-  // user.setName(name);
-
-  CometChat.createUser(user, authKey).then(
+export const loginChatWithAuthToken = (authToken) => {
+  // const uid = "SUPERHERO1";
+  //change this to a try catch
+  CometChat.login(authToken).then(
     (user) => {
-      console.log("user created", user);
+      console.log("Login Successful:", { user });
       return user;
     },
     (error) => {
-      console.log("error", error);
+      console.log("Login failed with exception:", { error });
+      throw error;
     }
   );
+};
+
+export const createChatUser = async (username) => {
+  const uid = username.split(" ").join("");
+  const name = username;
+
+  // const user = { uid: uid, name: name };
+
+  const newUser = new CometChat.User(uid);
+
+  newUser.setName(name);
+
+  // let token = "";
+
+  try {
+    const user = await CometChat.createUser(newUser, authKey);
+    console.log("user created", user);
+    const token = await generateAuthToken(user.uid);
+    return { user: user, authToken: token };
+  } catch (error) {
+    console.log("error", error);
+    throw error;
+  }
 };
 
 export const getChatUser = (username) => {
@@ -91,10 +82,27 @@ export const getChatUser = (username) => {
   CometChat.getUser(UID).then(
     (user) => {
       console.log("User details fetched for user:", user);
+      return user;
     },
     (error) => {
       console.log("User details fetching failed with error:", error);
       throw error;
     }
   );
+};
+
+const generateAuthToken = async (uid) => {
+  const options = {
+    headers: { apiKey: authKey, appId: appID },
+  };
+
+  const body = JSON.stringify({ force: true });
+
+  const response = await axios.post(
+    `https://api-us.cometchat.io/v2.0/users/${uid}/auth_tokens`,
+    body,
+    options
+  );
+  console.log(response);
+  return response.data.data.authToken;
 };
