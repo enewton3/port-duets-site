@@ -16,7 +16,7 @@ export default function PopupChatWrapper(props) {
       // maxHeight: "40vh",
       // maxWidth: "30vw",
     },
-    paper: { maxHeight: "40vh" },
+    // paper: { maxHeight: "40vh" },
   }));
 
   const classes = useStyles();

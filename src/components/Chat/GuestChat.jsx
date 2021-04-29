@@ -1,15 +1,17 @@
 import React from "react";
 import {
   // CometChatConversationListWithMessages,
-  CometChatUserListWithMessages,
+  CometChatMessages,
+  // CometChatUserListWithMessages,
 } from "../CometChatWorkspace/src";
 import CometChatWrapper from "./CometChatWrapper";
 
 export default function GuestChat({ currentGuest }) {
   return (
     <CometChatWrapper currentGuest={currentGuest}>
-      {/* <CometChatConversationListWithMessages /> */}
-      <CometChatUserListWithMessages />
+      {/* <CometChatConversationListWithMessages chatWithUser="evynnewton" /> */}
+      {/* <CometChatUserListWithMessages /> */}
+      <CometChatMessages chatWithUser="evynnewton" />
     </CometChatWrapper>
   );
 }

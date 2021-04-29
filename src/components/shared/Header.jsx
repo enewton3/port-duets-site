@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: "0 1vw 0",
     zIndex: "1000",
   },
-  logo: { height: "100%", paddingLeft: "2vw" },
+  logo: { height: "85%", paddingLeft: "2vw" },
   headerBlurb: { textAlign: "right", height: "80%", paddingRight: "2vw" },
 }));
 
