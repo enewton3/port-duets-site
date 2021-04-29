@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.8rem",
     // backgroundColor: theme.palette.primary.main,
     // boxShadow: "0px 0px 8px black",
-    padding: "3vh 1vw 1vh 1vw",
+    padding: "5vh 1vw 1vh 1vw",
     textAlign: "center",
   },
 }));
