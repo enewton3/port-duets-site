@@ -2,7 +2,17 @@ import React from "react";
 
 export default function VimeoFrame() {
   return (
-    <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+    <div
+      style={{
+        // padding: "56.25% 0 0 0",
+        position: "relative",
+        // width: "100%",
+        // height: "100%",
+        width: "80%",
+        aspectRatio: "16/9",
+        // height: "73%",
+      }}
+    >
       <iframe
         src="https://vimeo.com/event/894011/embed/3f2bb36501"
         frameBorder="0"

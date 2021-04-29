@@ -11,44 +11,39 @@ const useStyles = makeStyles((theme) => ({
     height: "70vh",
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
-    backgroundSize: "contain",
+    backgroundSize: "60vw 70vh",
     backgroundRepeat: "no-repeat",
-    // display: "flex",
-    // flexFlow: "column wrap",
-    display: "grid",
-    gridTemplateRows: "1 2 3",
-    gridTemplateColumns: "1",
+    display: "flex",
+    flexFlow: "column wrap",
     alignItems: "center",
-    justifyItems: "center",
-    textAlign: "center",
-    // margin: "0 auto",
-    // aspectRatio: "16/9",
-    "@media (max-width: 900px)": { width: "80vw" },
-    "@media (max-width: 650px)": { width: "90vw" },
-    "@media (max-width: 450px)": { width: "100vw" },
+    justifyContent: "space-evenly",
+    "@media (max-width: 900px)": { width: "80vw", backgroundSize: "80vw 70vh" },
+    "@media (max-width: 650px)": { width: "90vw", backgroundSize: "90vw 70vh" },
+    "@media (max-width: 450px)": {
+      width: "100vw",
+      backgroundSize: "100vw 70vh",
+    },
   },
   spacer: {
     width: "100%",
     height: "5%",
   },
   vimeoframe: {
-    width: "85%",
-    height: "73%",
-    // paddingTop: "5vh",
+    width: "80%",
+    // height: "73%",
     aspectRatio: "16/9",
-    // marginBottom: "2vh",
-    // justifySelf: "flex-end",
   },
   buttonContainer: {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    // paddingBottom: "2vh",
+    // margin: "2vh 0 2vh 0",
   },
   button: {
-    width: "10vw",
-    // alignSelf: "center",
-    // justifySelf: "center",
+    width: "12vw",
+    height: "5vh",
+    alignSelf: "center",
+    justifySelf: "center",
     // margin: "0 auto",
   },
 }));
@@ -57,14 +52,14 @@ export default function EventFrame() {
   const classes = useStyles();
   return (
     <div className={classes.goldborder}>
-      {/* <div className={classes.spacer}></div> */}
-      <div className={classes.vimeoframe}>
-        <VimeoFrame />
-      </div>
+      <div className={classes.spacer}></div>
+      {/* <div className={classes.vimeoframe}> */}
+      <VimeoFrame />
+      {/* </div> */}
       <div className={classes.buttonContainer}>
         <EventButton
           classTEST={classes.button}
-          link="https://www.donate.com"
+          link="https://giving.massgeneral.org/donate/duets/"
           image={donatebutton}
         />
       </div>
