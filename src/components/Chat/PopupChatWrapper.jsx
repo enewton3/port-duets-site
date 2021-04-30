@@ -16,7 +16,13 @@ export default function PopupChatWrapper(props) {
       // maxHeight: "40vh",
       // maxWidth: "30vw",
     },
-    // paper: { maxHeight: "40vh" },
+    paper: {
+      height: "50vh",
+      width: "20vw",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
   }));
 
   const classes = useStyles();
