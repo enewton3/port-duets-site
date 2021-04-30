@@ -39,19 +39,28 @@ export const loginChatWithUsername = (username) => {
   );
 };
 
-export const loginChatWithAuthToken = (authToken) => {
+export const loginChatWithAuthToken = async (authToken) => {
   // const uid = "SUPERHERO1";
   //change this to a try catch
-  CometChat.login(authToken).then(
-    (user) => {
-      console.log("Login Successful:", { user });
-      return user;
-    },
-    (error) => {
-      console.log("Login failed with exception:", { error });
-      throw error;
-    }
-  );
+
+  try {
+    const user = await CometChat.login(authToken);
+    console.log("Login Successful:", { user });
+    return user;
+  } catch (error) {
+    console.log("Login failed with exception:", { error });
+    throw error;
+  }
+  // CometChat.login(authToken).then(
+  //   (user) => {
+  //     console.log("Login Successful:", { user });
+  //     return user;
+  //   },
+  //   (error) => {
+  //     console.log("Login failed with exception:", { error });
+  //     throw error;
+  //   }
+  // );
 };
 
 export const createChatUser = async (username) => {
