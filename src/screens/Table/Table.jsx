@@ -9,7 +9,7 @@ import {
 } from "../../components/shared/EventButtons";
 import Sponsors from "../../components/Sponsors/Sponsors";
 import Header from "../../components/shared/Header";
-import GuestChat from "../../components/Chat/GuestChat";
+// import GuestChat from "../../components/Chat/GuestChat";
 import PopupChatWrapper from "../../components/Chat/PopupChatWrapper";
 
 const useStyles = makeStyles((theme) => ({
