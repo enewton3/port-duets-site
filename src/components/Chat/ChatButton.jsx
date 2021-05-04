@@ -1,23 +1,56 @@
 import React from "react";
 import HelpIcon from "@material-ui/icons/Help";
 import CloseIcon from "@material-ui/icons/Close";
-import { IconButton, makeStyles, Tooltip } from "@material-ui/core";
+import {
+  Button,
+  IconButton,
+  makeStyles,
+  Tooltip,
+  withStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: theme.palette.primary.main,
-    color: "black",
+    // backgroundColor: theme.palette.primary.main,
+    // color: "black",
+    // "&:hover": {
+    //   backgroundColor: theme.palette.primary.light,
+    // },
+    backgroundColor: "black",
+    color: "white",
+    width: "15vw",
+    height: "6vh",
+    fontFamily: "LaLuxe",
     "&:hover": {
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: "#2c2c2c",
     },
+    fontSize: "1.2rem",
   },
 }));
+
+const CustomButton = withStyles((theme) => ({
+  root: {
+    borderRadius: "0px",
+  },
+}))(Button);
 
 export default function ChatButton({ setChatOpen, setAnchorEl, chatOpen }) {
   const classes = useStyles();
   return (
-    <Tooltip title="Open Tech Support Chat">
-      <IconButton
+    <CustomButton
+      className={classes.button}
+      onClick={(e) => {
+        setChatOpen((prev) => !prev);
+        setAnchorEl(e.currentTarget);
+      }}
+    >
+      Tech Support
+    </CustomButton>
+  );
+}
+
+// <Tooltip title="Open Tech Support Chat">
+/* <IconButton
         className={classes.button}
         variant="outlined"
         onClick={(e) => {
@@ -26,7 +59,5 @@ export default function ChatButton({ setChatOpen, setAnchorEl, chatOpen }) {
         }}
       >
         {chatOpen ? <CloseIcon /> : <HelpIcon />}
-      </IconButton>
-    </Tooltip>
-  );
-}
+      // </IconButton> */
+// {/* </Tooltip> */}
