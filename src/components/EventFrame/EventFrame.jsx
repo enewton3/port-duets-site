@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     // margin: "2vh 0 2vh 0",
   },
   button: {
-    width: "12vw",
+    width: "10vw",
     height: "5vh",
     alignSelf: "center",
     justifySelf: "center",

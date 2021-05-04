@@ -18,19 +18,15 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: "12vh",
-    paddingBottom: "12vh",
+    paddingTop: "13vh",
+    paddingBottom: "5vh",
   },
   chatButton: {
-    position: "absolute",
-    right: "1vw",
-    top: "11vh",
+    marginTop: "5vh",
   },
   give: {
     fontFamily: "LaLuxe",
     fontSize: "1.8rem",
-    // backgroundColor: theme.palette.primary.main,
-    // boxShadow: "0px 0px 8px black",
     padding: "5vh 1vw 1vh 1vw",
     textAlign: "center",
   },
@@ -60,13 +56,13 @@ export default function Table({ currentGuest }) {
           XXX.XXX.XXX to give
         </Typography>
         <Sponsors />
-      </div>
-      <div className={classes.chatButton}>
-        <ChatButton
-          chatOpen={chatOpen}
-          setChatOpen={setChatOpen}
-          setAnchorEl={setAnchorEl}
-        />
+        <div className={classes.chatButton}>
+          <ChatButton
+            chatOpen={chatOpen}
+            setChatOpen={setChatOpen}
+            setAnchorEl={setAnchorEl}
+          />
+        </div>
       </div>
       <PopupChatWrapper
         chatOpen={chatOpen}
@@ -74,7 +70,7 @@ export default function Table({ currentGuest }) {
         handleClose={handleClose}
       >
         {/* <PubnubChatWrapper username={chatUsername}> */}
-        <GuestChat currentGuest={currentGuest} />
+        {/* <GuestChat currentGuest={currentGuest} /> */}
         {/* </PubnubChatWrapper> */}
       </PopupChatWrapper>
       <ProgramButton />
