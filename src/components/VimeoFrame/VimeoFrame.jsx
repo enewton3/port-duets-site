@@ -7,8 +7,8 @@ export default function VimeoFrame() {
         // padding: "56.25% 0 0 0",
         position: "relative",
         width: "80%",
-        aspectRatio: "16/9",
         height: "73%",
+        aspectRatio: "16/9",
       }}
     >
       <iframe
