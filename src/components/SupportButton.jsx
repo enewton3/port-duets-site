@@ -1,0 +1,54 @@
+import React from "react";
+import { Button, makeStyles, Typography, withStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  container: { textAlign: "center" },
+  link: { textDecoration: "none" },
+  secondLink: { color: "black" },
+  button: {
+    backgroundColor: "black",
+    color: "white",
+    width: "15vw",
+    height: "6vh",
+    fontFamily: "LaLuxe",
+    "&:hover": {
+      backgroundColor: "#2c2c2c",
+    },
+    fontSize: "1.2rem",
+  },
+  text: { fontFamily: "Libre Baskerville" },
+}));
+
+const CustomButton = withStyles((theme) => ({
+  root: {
+    borderRadius: "0px",
+  },
+}))(Button);
+
+export default function SupportButton() {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <a
+        href="mailto:vesupport@portlighting.com"
+        target="_blank"
+        rel="noreferrer"
+        className={classes.link}
+      >
+        <CustomButton className={classes.button}>Tech Support</CustomButton>
+      </a>
+      <Typography className={classes.text}>
+        Live tech support is standing by
+        <br />
+        <a
+          href="mailto:vesupport@portlighting.com"
+          target="_blank"
+          rel="noreferrer"
+          className={classes.secondLink}
+        >
+          vesupport@portlighting.com
+        </a>
+      </Typography>
+    </div>
+  );
+}
