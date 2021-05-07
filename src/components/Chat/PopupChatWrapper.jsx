@@ -15,10 +15,11 @@ export default function PopupChatWrapper(props) {
       display: chatOpen ? "block" : "none",
       // maxHeight: "40vh",
       // maxWidth: "30vw",
+      zIndex: "2000",
     },
     paper: {
       height: "50vh",
-      width: "20vw",
+      // width: "40vw",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -35,7 +36,7 @@ export default function PopupChatWrapper(props) {
       disablePortal
       keepMounted
       className={classes.popper}
-      placement="left-start"
+      placement="bottom"
     >
       {({ TransitionProps, placement }) => (
         <Grow

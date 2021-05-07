@@ -1,6 +1,8 @@
 import { AppBar, Button, makeStyles, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PopupChatWrapper from "../Chat/PopupChatWrapper";
+import UserDialog from "../UserDialog/UserDialog";
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
@@ -25,25 +27,42 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AdminNav({ handleLogout, currentUser }) {
   const classes = useStyles();
+  const [chatOpen, setChatOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   return (
-    <AppBar className={classes.appbar}>
-      <Link to="/" className={classes.link}>
-        <Button className={classes.link}>
-          <Typography>Duets Event Admin Panel</Typography>
+    <>
+      <AppBar className={classes.appbar}>
+        <Link to="/" className={classes.link}>
+          <Button className={classes.link}>
+            <Typography>Duets Event Admin Panel</Typography>
+          </Button>
+        </Link>
+        {currentUser.firstname === "evyn" ? (
+          <Typography className={classes.welcome}>
+            Hi{" "}
+            <Button
+              onClick={(e) => {
+                setChatOpen((prev) => !prev);
+                setAnchorEl(e.currentTarget);
+              }}
+            >
+              {currentUser.firstname}
+            </Button>
+            !
+          </Typography>
+        ) : null}
+        <Button
+          className={classes.logoutButton}
+          variant="outlined"
+          onClick={handleLogout}
+        >
+          Logout
         </Button>
-      </Link>
-      {currentUser ? (
-        <Typography className={classes.welcome}>
-          Hi {currentUser.firstname}!
-        </Typography>
-      ) : null}
-      <Button
-        className={classes.logoutButton}
-        variant="outlined"
-        onClick={handleLogout}
-      >
-        Logout
-      </Button>
-    </AppBar>
+      </AppBar>
+      <PopupChatWrapper chatOpen={chatOpen} anchorEl={anchorEl}>
+        <UserDialog />
+      </PopupChatWrapper>
+    </>
   );
 }
