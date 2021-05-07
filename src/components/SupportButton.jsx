@@ -8,8 +8,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: "black",
     color: "white",
-    width: "15vw",
-    height: "6vh",
+    // width: "15vw",
+    // height: "6vh",
+    padding: "1vh 1vw 1vh 1vw",
     fontFamily: "LaLuxe",
     "&:hover": {
       backgroundColor: "#2c2c2c",
