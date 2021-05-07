@@ -25,6 +25,7 @@ export default function AdminContainer() {
   useEffect(() => {
     const handleVerify = async () => {
       const userData = await verifyUser();
+
       setCurrentUser(userData);
     };
     handleVerify();
