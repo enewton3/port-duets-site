@@ -38,7 +38,7 @@ export default function AdminNav({ handleLogout, currentUser }) {
             <Typography>Duets Event Admin Panel</Typography>
           </Button>
         </Link>
-        {currentUser.firstname === "evyn" ? (
+        {currentUser.firstname.toLowerCase() === "evyn" ? (
           <Typography className={classes.welcome}>
             Hi{" "}
             <Button
