@@ -1,7 +1,7 @@
 import { Button, makeStyles, Paper } from "@material-ui/core";
 import React, { useState } from "react";
 import AdminNav from "../../components/AdminNav/AdminNav";
-import AdminChat from "../../components/Chat/AdminChat";
+// import AdminChat from "../../components/Chat/AdminChat";
 import GuestCreate from "../../components/GuestCreate/GuestCreate";
 import GuestList from "../../components/GuestList/GuestList";
 import TableCreate from "../../components/TableCreate/TableCreate";
@@ -11,7 +11,7 @@ import { createTable } from "../../services/tables";
 
 const useStyles = makeStyles((theme) => ({
   panelBody: {
-    paddingTop: "10vh",
+    paddingTop: "7vh",
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "space-around",
@@ -27,7 +27,11 @@ const useStyles = makeStyles((theme) => ({
   container: { display: "flex", flexFlow: "column wrap" },
   vimeopaper: {
     width: "47vw",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     padding: "2vh 1vw 2vh 1vw",
+    minHeight: "50vh",
     maxHeight: "80vh",
     overflowY: "scroll",
     marginTop: "2vh",
@@ -39,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: "47vw",
     padding: "2vh 1vw 2vh 1vw",
+    minHeight: "50vh",
     maxHeight: "60vh",
     overflowY: "scroll",
     marginTop: "2vh",
@@ -82,11 +87,11 @@ export default function AdminPanel(props) {
         <Paper className={classes.vimeopaper}>
           <VimeoFrame />
         </Paper>
-        <Paper className={classes.paper}>
-          {/* <PubnubChatWrapper username={chatUsername}> */}
-          <AdminChat currentUser={currentUser} />
-          {/* </PubnubChatWrapper> */}
-        </Paper>
+        {/* <Paper className={classes.paper}> */}
+        {/* <PubnubChatWrapper username={chatUsername}> */}
+        {/* <AdminChat currentUser={currentUser} /> */}
+        {/* </PubnubChatWrapper> */}
+        {/* </Paper> */}
         <div className={classes.container}>
           <Paper className={classes.paper}>
             <GuestList
