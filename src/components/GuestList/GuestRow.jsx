@@ -20,7 +20,7 @@ export default function GuestRow({ guest, isItemSelected, handleSelect }) {
       </TableCell>
       <TableCell align="center">{guest.email}</TableCell>
       <TableCell align="center">{guest.table?.table_number}</TableCell>
-      <TableCell align="center">{guest.active ? "Yes" : "No"}</TableCell>
+      {/* <TableCell align="center">{guest.active ? "Yes" : "No"}</TableCell> */}
       <TableCell align="center">{prettyCreated}</TableCell>
       <TableCell align="center">{prettyUpdated}</TableCell>
     </TableRow>
