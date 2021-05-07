@@ -1,23 +1,18 @@
 import {
-  Button,
-  Checkbox,
   Divider,
   makeStyles,
   Table,
   TableBody,
-  TableCell,
   TableHead,
-  TableRow,
-  Tooltip,
-  Typography,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+
 import React, { useState, useEffect } from "react";
 import { deleteTable } from "../../services/tables";
-import { CSVLink } from "react-csv";
 import DeleteWarn from "../DeleteWarn/DeleteWarn";
-import EditIcon from "@material-ui/icons/Edit";
 import TableCreate from "../TableCreate/TableCreate";
+import TableListHeader from "./TableListHeader";
+import TableTableHead from "./TableTableHead";
+import TableTableRow from "./TableTableRow";
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -66,14 +61,17 @@ export default function TableList({
   const [selected, setSelected] = useState([]);
   const [warningOpen, setWarningOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [sortedTables, setSortedTables] = useState([]);
 
   useEffect(() => {
     fetchTables();
   }, [fetchTables]);
 
-  useEffect(() => {}, [tables]);
-
-  const sortedTables = tables.sort((a, b) => a.table_number - b.table_number);
+  useEffect(() => {
+    const sorted = tables.sort((a, b) => a.table_number - b.table_number);
+    console.log(sorted);
+    setSortedTables(sorted);
+  }, [tables]);
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -121,100 +119,33 @@ export default function TableList({
 
   return (
     <>
-      <div className={classes.header}>
-        <Typography className={classes.listhead} variant="h5">
-          Tables
-        </Typography>
-        <Tooltip title="Total Tables">
-          <Typography className={classes.counter}>{tables.length}</Typography>
-        </Tooltip>
-        <div className={classes.actions}>
-          <Tooltip title="Export CSV File">
-            <CSVLink className={classes.actionButtonLink} data={tables}>
-              <Button className={classes.actionButton} variant="outlined">
-                Export CSV
-              </Button>
-            </CSVLink>
-          </Tooltip>
-          <Tooltip title="Refresh Tables">
-            <Button
-              className={classes.actionButton}
-              onClick={fetchTables}
-              variant="outlined"
-            >
-              Refresh
-            </Button>
-          </Tooltip>
-
-          {selected.length > 0 ? (
-            <Tooltip title="Delete Selected">
-              <Button
-                className={classes.actionButton}
-                onClick={() => setWarningOpen(true)}
-                variant="outlined"
-              >
-                <DeleteIcon />
-              </Button>
-            </Tooltip>
-          ) : null}
-
-          {selected.length === 1 ? (
-            <Tooltip title="Edit Selected">
-              <Button
-                className={classes.actionButton}
-                onClick={() => setEditOpen(true)}
-                variant="outlined"
-              >
-                <EditIcon />
-              </Button>
-            </Tooltip>
-          ) : null}
-        </div>
-      </div>
-
+      <TableListHeader
+        selected={selected}
+        fetchTables={fetchTables}
+        tables={tables}
+        setWarningOpen={setWarningOpen}
+        setEditOpen={setEditOpen}
+      />
       <Divider />
       <Table stickyHeader className={classes.list} size="small">
         <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                onClick={(e) => handleSelectAllClick(e)}
-                indeterminate={
-                  selected.length > 0 && selected.length < tables.length
-                }
-                checked={tables.length > 0 && selected.length === tables.length}
-              />
-            </TableCell>
-            <TableCell align="center">Table Number</TableCell>
-            <TableCell align="center">Table Pin</TableCell>
-            <TableCell align="center">Guests</TableCell>
-            <TableCell align="center">Zoom Link</TableCell>
-          </TableRow>
+          <TableTableHead
+            selected={selected}
+            tables={tables}
+            handleSelectAllClick={handleSelectAllClick}
+          />
         </TableHead>
         <TableBody>
           {sortedTables.map((table) => {
             const isItemSelected = isSelected(table.id);
 
             return (
-              <TableRow
+              <TableTableRow
+                table={table}
+                isItemSelected={isItemSelected}
+                handleSelect={handleSelect}
                 key={table.id}
-                hover
-                role="checkbox"
-                selected={isItemSelected}
-              >
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    onClick={(e) => handleSelect(e, table.id)}
-                    checked={isItemSelected}
-                  />
-                </TableCell>
-                <TableCell align="center">{table.table_number}</TableCell>
-                <TableCell align="center">{table.table_pin}</TableCell>
-                <TableCell align="center">
-                  {table.duets_guests.length}
-                </TableCell>
-                <TableCell align="center">{table.zoom_link}</TableCell>
-              </TableRow>
+              />
             );
           })}
         </TableBody>
