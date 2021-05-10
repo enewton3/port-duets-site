@@ -78,6 +78,10 @@ export default function AdminPanel(props) {
     const resp = await createTable(formData);
     return resp;
   };
+  const firstname = currentUser?.firstname.toLowerCase();
+
+  const admin =
+    firstname === "evyn" || firstname === "kyle" || firstname === "steve";
 
   return (
     <div>
@@ -101,14 +105,16 @@ export default function AdminPanel(props) {
               handleDeleteAll={handleDeleteAll}
             />
           </Paper>
-          <Button
-            onClick={() => {
-              setCreateOpen(true);
-            }}
-            variant="outlined"
-          >
-            Create A New Guest
-          </Button>
+          {admin ? (
+            <Button
+              onClick={() => {
+                setCreateOpen(true);
+              }}
+              variant="outlined"
+            >
+              Create A New Guest
+            </Button>
+          ) : null}
           <GuestCreate
             onClose={() => {
               setCreateOpen(false);
