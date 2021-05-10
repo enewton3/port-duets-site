@@ -51,7 +51,7 @@ export default function Table({ currentGuest }) {
         <EventFrame />
         <Typography className={classes.give}>
           Text 'Duets' To <br />
-          XXX.XXX.XXX to give
+          844.202.0050 to give
         </Typography>
         <Sponsors />
         <div className={classes.chatButton}>
