@@ -4,11 +4,9 @@ export default function VimeoFrame() {
   return (
     <div
       style={{
-        // padding: "56.25% 0 0 0",
         position: "relative",
         width: "100%",
         height: "100%",
-        // aspectRatio: "16/9",
       }}
     >
       <iframe

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     paddingTop: "13vh",
     paddingBottom: "5vh",
+    "@media (max-width: 480px)": { paddingBottom: "20vh" },
   },
   chatButton: {
     marginTop: "5vh",
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.8rem",
     padding: "5vh 1vw 1vh 1vw",
     textAlign: "center",
+    "@media (max-width: 1024px)": { fontSize: "1.7rem", paddingBottom: "20vh" },
+    // "@media (max-width: 768px)": { width: "25v" },
+    "@media (max-width: 480px)": { fontSize: "1.5rem" },
   },
 }));
 

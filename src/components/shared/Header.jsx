@@ -25,19 +25,20 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "1vh",
+    "@media (max-width: 1330px)": { height: "8vh" },
+    "@media (max-width: 1060px)": { height: "7vh" },
+    "@media (max-width: 926px)": { height: "5vh" },
+    "@media (max-width: 380px)": { height: "4vh" },
   },
   logo: {
     height: "85%",
-    // paddingTop: "1vh",
-    // paddingLeft: "1vw",
-    // paddingBottom: "1vh",
+    // "@media (max-width: 450px)": { width: "30%" },
   },
   headerBlurb: {
-    // textAlign: "right",
     height: "80%",
-    // paddingRight: "1vw",
-    // paddingTop: "1vh",
-    // paddingBottom: "1vh",
+    // "@media (max-width: 1200px)": { width: "60%" },
+    // "@media (max-width: 750px)": { width: "50%" },
+    // "@media (max-width: 490px)": { width: "40%" },
   },
 }));
 
