@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   goldborder: {
     width: "60vw",
     height: "70vh",
+    // width: "100%",
     backgroundImage: `url(${backgroundimg})`,
     backgroundPosition: "center",
     backgroundSize: "60vw 70vh",
@@ -17,11 +18,22 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: "column wrap",
     alignItems: "center",
     justifyContent: "space-evenly",
-    "@media (max-width: 900px)": { width: "80vw", backgroundSize: "80vw 70vh" },
-    "@media (max-width: 650px)": { width: "90vw", backgroundSize: "90vw 70vh" },
-    "@media (max-width: 450px)": {
+
+    // "@media (max-width: 1200px)": { width: "80vw", backgroundSize: "80vw 70vh" },
+    "@media (max-width: 1024px)": {
+      width: "80vw",
+      // height: "70vh",
+      backgroundSize: "80vw 70vh",
+    },
+    "@media (max-width: 768px)": {
+      width: "90vw",
+      height: "60vh",
+      backgroundSize: "90vw 60vh",
+    },
+    "@media (max-width: 480px)": {
       width: "100vw",
-      backgroundSize: "100vw 70vh",
+      height: "50vh",
+      backgroundSize: "100vw 50vh",
     },
   },
   spacer: {
@@ -33,7 +45,9 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     // height: "73%",
     aspectRatio: "16/9",
-    // "@media (min-aspect-ratio: 16/9)": { width: "80vw", backgroundSize: "80vw 70vh" }
+    "@media (max-width: 900px)": { width: "90%" },
+    // "@media (max-width: 650px)": { width: "90vw" },
+    "@media (max-width: 450px)": { width: "95%" },
   },
   buttonContainer: {
     width: "100%",
@@ -47,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     justifySelf: "center",
     // margin: "0 auto",
+    // "@media (max-width: 1200px)": { width: "80vw", backgroundSize: "80vw 70vh" },
+    "@media (max-width: 1024px)": { width: "20vw" },
+    "@media (max-width: 768px)": { width: "25vw" },
+    "@media (max-width: 480px)": { width: "30vw" },
   },
 }));
 

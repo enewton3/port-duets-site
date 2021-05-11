@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     width: "12vw",
     height: "5vh",
+    "@media (max-width: 1024px)": { width: "20vw" },
+    "@media (max-width: 768px)": { width: "25vw" },
+    "@media (max-width: 480px)": { width: "30vw" },
   },
 }));
 
