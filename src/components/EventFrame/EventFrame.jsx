@@ -41,12 +41,11 @@ const useStyles = makeStyles((theme) => ({
     height: "5%",
   },
   vimeoframe: {
-    // padding: "56.25% 0 0 0",
     width: "80%",
-    // height: "73%",
-    aspectRatio: "16/9",
+    height: "73%",
+    // aspectRatio: "16/9",
     "@media (max-width: 900px)": { width: "90%" },
-    // "@media (max-width: 650px)": { width: "90vw" },
+    "@media (max-width: 650px)": { width: "80%" },
     "@media (max-width: 450px)": { width: "95%" },
   },
   buttonContainer: {
@@ -72,7 +71,7 @@ export default function EventFrame() {
   const classes = useStyles();
   return (
     <div className={classes.goldborder}>
-      <div className={classes.spacer}></div>
+      {/* <div className={classes.spacer}></div> */}
       <div className={classes.vimeoframe}>
         <VimeoFrame />
       </div>
