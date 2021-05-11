@@ -40,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "2vh",
     },
   },
+  vimeoFrame: {
+    aspectRatio: "16/9",
+    width: "100%",
+  },
   paper: {
     width: "47vw",
     padding: "2vh 1vw 2vh 1vw",
@@ -89,7 +93,9 @@ export default function AdminPanel(props) {
 
       <div className={classes.panelBody}>
         <Paper className={classes.vimeopaper}>
-          <VimeoFrame />
+          <div className={classes.vimeoFrame}>
+            <VimeoFrame />
+          </div>
         </Paper>
         {/* <Paper className={classes.paper}> */}
         {/* <PubnubChatWrapper username={chatUsername}> */}

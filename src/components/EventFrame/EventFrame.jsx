@@ -29,9 +29,11 @@ const useStyles = makeStyles((theme) => ({
     height: "5%",
   },
   vimeoframe: {
+    // padding: "56.25% 0 0 0",
     width: "80%",
-    height: "73%",
+    // height: "73%",
     aspectRatio: "16/9",
+    // "@media (min-aspect-ratio: 16/9)": { width: "80vw", backgroundSize: "80vw 70vh" }
   },
   buttonContainer: {
     width: "100%",

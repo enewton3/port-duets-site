@@ -68,7 +68,7 @@ export default function Table({ currentGuest }) {
       {/* </PubnubChatWrapper> */}
       {/* </PopupChatWrapper> */}
       <ProgramButton />
-      {currentGuest.table.zoom_link ? (
+      {currentGuest?.table?.zoom_link ? (
         <ZoomButton currentGuest={currentGuest} />
       ) : null}
     </>
