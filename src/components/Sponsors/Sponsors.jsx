@@ -38,6 +38,7 @@ export default function Sponsors() {
         <p>Lillian and Leo Barry</p>
         <p>William Collatos</p>
         <p>Deirdre Giblin</p>
+        <p>Arthur, Sandra and Sarah Irving</p>
         <p>Kelly Family Foundation</p>
         <p>Ron and Deborah Krantz</p>
         <p>Leslie and Kevin McCafferty</p>
@@ -86,9 +87,11 @@ export default function Sponsors() {
         <p>Marie Lacy </p>
         <p>Carolyn and Scott Lemone</p>
         <p>Geoffrey and Roberta Levy</p>
+        <p>Dr. Keith and Mrs. Cheryl Lillemoe</p>
         <p>Mimi and Scott McDougal</p>
         <p>Lu Ann and Bruce Ohanian</p>
         <p>Sonia and Eduardo Perez</p>
+        <p>Melanie and Matthew Ronsheim</p>
         <p>Carol Markey Ryan</p>
         <p>Peggy Scott</p>
         <p>Dr. William U. and Jensie Shipley</p>
