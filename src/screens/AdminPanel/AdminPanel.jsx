@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "50vh",
     maxHeight: "80vh",
     overflowY: "scroll",
+    // scrollbarColor: "transparent transparent",
     marginTop: "2vh",
     "@media (max-width: 800px)": {
       width: "90vw",
