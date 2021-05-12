@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: "1rem",
     paddingBottom: "1vh",
+    "@media (max-width: 750px)": { display: "none" },
   },
   button: {
     width: "12vw",

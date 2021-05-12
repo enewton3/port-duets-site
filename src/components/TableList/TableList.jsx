@@ -69,7 +69,7 @@ export default function TableList({
 
   useEffect(() => {
     const sorted = tables.sort((a, b) => a.table_number - b.table_number);
-    console.log(sorted);
+    // console.log(sorted);
     setSortedTables(sorted);
   }, [tables]);
 

@@ -47,6 +47,7 @@ export default function Sponsors() {
 
       <div>
         <h3 className={classes.heading}>Gold Sponsor</h3>
+        <p>Joan and Steve Belkin</p>
         <p>Linda and Ben Butcher</p>
         <p>Dr. and Mrs. Carlos Fernández-del Castillo</p>
         <p>Kathryn and John Harris</p>

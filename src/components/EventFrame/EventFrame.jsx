@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
       {
         position: "absolute",
         top: "4vh",
-        // width: "100vw",
-        height: "100vh",
+        width: "100vw",
+        // height: "100vh",
       },
     //iphoneX
     // "@media only screen and (min-device-width: 375px) and (max-device-width: 850px)   and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)":
