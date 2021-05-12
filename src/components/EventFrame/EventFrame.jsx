@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import VimeoFrame from "../../components/VimeoFrame/VimeoFrame";
 import backgroundimg from "../../assets/framebackground.png";
@@ -48,6 +48,15 @@ const useStyles = makeStyles((theme) => ({
     // alignItems: "center",
     justifyContent: "center",
   },
+  containerFull: {
+    position: "absolute",
+    top: "5vh",
+    width: "100vw",
+    height: "95vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   vimeoframe: {
     width: "80%",
     height: "73%",
@@ -55,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-width: 900px)": { width: "90%" },
     "@media (max-width: 650px)": { width: "80%" },
     "@media (max-width: 450px)": { width: "95%" },
+  },
+  vimeoframeFull: {
+    width: "100vw",
+    height: "100vh",
   },
   buttonContainer: {
     width: "100%",
@@ -77,11 +90,59 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EventFrame() {
   const classes = useStyles();
+
+  console.log(document.fullscreenElement);
+  console.log(window.screen.orientation);
+
+  const [orientation, setOrientation] = useState("");
+
+  const width =
+    orientation === "landscape-primary" || orientation === "landscape-secondary"
+      ? "100vw"
+      : "100%";
+  const height =
+    orientation === "landscape-primary" || orientation === "landscape-secondary"
+      ? "100vh"
+      : "100%";
+
+  console.log(width, height);
+
+  function handleResize() {
+    let orientation =
+      (window.screen.orientation || {}).type ||
+      window.screen.mozOrientation ||
+      window.screen.msOrientation;
+    setOrientation(orientation);
+    console.log(orientation);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return function cleanup() {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={classes.goldborder}>
       <div className={classes.spacer}></div>
-      <div className={classes.container}>
-        <div className={classes.vimeoframe}>
+      <div
+        className={
+          orientation === "landscape-primary" ||
+          orientation === "landscape-secondary"
+            ? classes.containerFull
+            : classes.container
+        }
+      >
+        <div
+          className={
+            orientation === "landscape-primary" ||
+            orientation === "landscape-secondary"
+              ? classes.vimeoframeFull
+              : classes.vimeoframe
+          }
+        >
           <VimeoFrame />
         </div>
       </div>

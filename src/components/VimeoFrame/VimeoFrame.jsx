@@ -6,14 +6,12 @@ export default function VimeoFrame() {
       style={{
         padding: "56.25% 0 0 0",
         position: "relative",
-        // width: "100%",
-        // height: "100%",
       }}
     >
       <iframe
         src="https://vimeo.com/event/894011/embed/3f2bb36501"
         frameBorder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
+        allow="autoplay; fullscreen; picture-in-picture;"
         title="vimeo event"
         style={{
           position: "absolute",
