@@ -66,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-width: 450px)": { width: "95%" },
   },
   vimeoframeFull: {
-    width: "100vw",
-    height: "100vh",
+    width: "50%",
+    height: "73%",
   },
   buttonContainer: {
     width: "100%",
@@ -93,6 +93,7 @@ export default function EventFrame() {
 
   console.log(document.fullscreenElement);
   console.log(window.screen.orientation);
+  console.log(window.navigator.userAgent);
 
   const [orientation, setOrientation] = useState("");
 
@@ -129,18 +130,20 @@ export default function EventFrame() {
       <div className={classes.spacer}></div>
       <div
         className={
-          orientation === "landscape-primary" ||
-          orientation === "landscape-secondary"
-            ? classes.containerFull
-            : classes.container
+          // orientation === "landscape-primary" ||
+          // orientation === "landscape-secondary"
+          //   ? classes.containerFull
+          //   :
+          classes.container
         }
       >
         <div
           className={
-            orientation === "landscape-primary" ||
-            orientation === "landscape-secondary"
-              ? classes.vimeoframeFull
-              : classes.vimeoframe
+            // orientation === "landscape-primary" ||
+            // orientation === "landscape-secondary"
+            //   ? classes.vimeoframeFull
+            //   :
+            classes.vimeoframe
           }
         >
           <VimeoFrame />
