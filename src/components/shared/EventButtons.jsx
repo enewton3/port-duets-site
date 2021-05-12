@@ -52,7 +52,7 @@ export const ProgramButton = (props) => {
       <Typography className={classes.text}>CLICK TO VIEW</Typography>
       <EventButton
         classTEST={classes.button}
-        link="https://www.program.com"
+        link="https://giving.massgeneral.org/duetsprogram"
         image={program}
       />
     </div>

@@ -39,6 +39,14 @@ const useStyles = makeStyles((theme) => ({
   spacer: {
     width: "100%",
     height: "5%",
+    // display: "none",
+    // "@media (max-width: 1200px)": { display: "block" },
+  },
+  container: {
+    width: "100%",
+    display: "flex",
+    // alignItems: "center",
+    justifyContent: "center",
   },
   vimeoframe: {
     width: "80%",
@@ -59,8 +67,8 @@ const useStyles = makeStyles((theme) => ({
     height: "5vh",
     alignSelf: "center",
     justifySelf: "center",
-    // margin: "0 auto",
-    // "@media (max-width: 1200px)": { width: "80vw", backgroundSize: "80vw 70vh" },
+    // marginTop: "2vh",
+    // "@media (max-width: 1200px)": { marginTop: "0" },
     "@media (max-width: 1024px)": { width: "20vw" },
     "@media (max-width: 768px)": { width: "25vw" },
     "@media (max-width: 480px)": { width: "30vw" },
@@ -71,9 +79,11 @@ export default function EventFrame() {
   const classes = useStyles();
   return (
     <div className={classes.goldborder}>
-      {/* <div className={classes.spacer}></div> */}
-      <div className={classes.vimeoframe}>
-        <VimeoFrame />
+      <div className={classes.spacer}></div>
+      <div className={classes.container}>
+        <div className={classes.vimeoframe}>
+          <VimeoFrame />
+        </div>
       </div>
       <div className={classes.buttonContainer}>
         <EventButton
