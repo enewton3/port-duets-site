@@ -39,8 +39,6 @@ const useStyles = makeStyles((theme) => ({
   spacer: {
     width: "100%",
     height: "5%",
-    // display: "none",
-    // "@media (max-width: 1200px)": { display: "block" },
     "@media only screen and (min-device-width: 375px) and (max-device-width: 850px) and (orientation: landscape)":
       { display: "none" },
   },
@@ -50,18 +48,22 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     // alignItems: "center",
     justifyContent: "center",
-    // "@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape)":
-    //   { position: "absolute", width: "100vw", height: "100vh" },
+    "@media only screen and (min-device-width: 320px) and (max-device-width: 850px) and (orientation: landscape)":
+      {
+        position: "absolute",
+        top: "4vh",
+        // width: "100vw",
+        height: "100vh",
+      },
+    //iphoneX
+    // "@media only screen and (min-device-width: 375px) and (max-device-width: 850px)   and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)":
+    //   {
+    //     position: "absolute",
+    //     top: "5vh",
+    //     width: "80vw",
+    //     // height: "73vh",
+    //   },
   },
-  // containerFull: {
-  //   position: "absolute",
-  //   top: "5vh",
-  //   width: "100vw",
-  //   height: "95vh",
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
   vimeoframe: {
     width: "80%",
     height: "73%",
@@ -69,25 +71,19 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-width: 900px)": { width: "90%" },
     "@media (max-width: 650px)": { width: "80%" },
     "@media (max-width: 450px)": { width: "95%" },
-    // "@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)":
-    //   { width: "100%", height: "100%" },
+    "@media only screen and (min-device-width: 375px) and (max-device-width: 850px) and (orientation: landscape)":
+      { width: "100%", height: "100%" },
   },
-  // vimeoframeFull: {
-  //   width: "50%",
-  //   height: "73%",
-  // },
   buttonContainer: {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    // margin: "2vh 0 2vh 0",
   },
   button: {
     width: "10vw",
     height: "5vh",
     alignSelf: "center",
     justifySelf: "center",
-    // marginTop: "2vh",
     // "@media (max-width: 1200px)": { marginTop: "0" },
     "@media (max-width: 1024px)": { width: "20vw" },
     "@media (max-width: 768px)": { width: "25vw" },
@@ -98,61 +94,11 @@ const useStyles = makeStyles((theme) => ({
 export default function EventFrame() {
   const classes = useStyles();
 
-  // console.log(document.fullscreenElement);
-  // console.log(window.screen.orientation);
-  // console.log(window.navigator.userAgent);
-
-  // const [orientation, setOrientation] = useState("");
-
-  // const width =
-  //   orientation === "landscape-primary" || orientation === "landscape-secondary"
-  //     ? "100vw"
-  //     : "100%";
-  // const height =
-  //   orientation === "landscape-primary" || orientation === "landscape-secondary"
-  //     ? "100vh"
-  //     : "100%";
-
-  // console.log(width, height);
-
-  // function handleResize() {
-  //   let orientation =
-  //     (window.screen.orientation || {}).type ||
-  //     window.screen.mozOrientation ||
-  //     window.screen.msOrientation;
-  //   setOrientation(orientation);
-  //   console.log(orientation);
-  // }
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize);
-
-  //   return function cleanup() {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   return (
     <div className={classes.goldborder}>
       <div className={classes.spacer}></div>
-      <div
-        className={
-          // orientation === "landscape-primary" ||
-          // orientation === "landscape-secondary"
-          //   ? classes.containerFull
-          //   :
-          classes.container
-        }
-      >
-        <div
-          className={
-            // orientation === "landscape-primary" ||
-            // orientation === "landscape-secondary"
-            //   ? classes.vimeoframeFull
-            //   :
-            classes.vimeoframe
-          }
-        >
+      <div className={classes.container}>
+        <div className={classes.vimeoframe}>
           <VimeoFrame />
         </div>
       </div>
