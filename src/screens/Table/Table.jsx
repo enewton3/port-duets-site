@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "13vh",
     paddingBottom: "5vh",
     "@media (max-width: 480px)": { paddingBottom: "20vh" },
+    // "@media only screen and (min-device-width: 375px) and (max-device-width: 850px) and (orientation: landscape)":
+    //   { paddingTop: "20vh" },
   },
   chatButton: {
     marginTop: "5vh",
