@@ -41,22 +41,27 @@ const useStyles = makeStyles((theme) => ({
     height: "5%",
     // display: "none",
     // "@media (max-width: 1200px)": { display: "block" },
+    "@media only screen and (min-device-width: 375px) and (max-device-width: 850px) and (orientation: landscape)":
+      { display: "none" },
   },
   container: {
     width: "100%",
+    // width: "83%",
     display: "flex",
     // alignItems: "center",
     justifyContent: "center",
+    // "@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape)":
+    //   { position: "absolute", width: "100vw", height: "100vh" },
   },
-  containerFull: {
-    position: "absolute",
-    top: "5vh",
-    width: "100vw",
-    height: "95vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  // containerFull: {
+  //   position: "absolute",
+  //   top: "5vh",
+  //   width: "100vw",
+  //   height: "95vh",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
   vimeoframe: {
     width: "80%",
     height: "73%",
@@ -64,11 +69,13 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-width: 900px)": { width: "90%" },
     "@media (max-width: 650px)": { width: "80%" },
     "@media (max-width: 450px)": { width: "95%" },
+    // "@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)":
+    //   { width: "100%", height: "100%" },
   },
-  vimeoframeFull: {
-    width: "50%",
-    height: "73%",
-  },
+  // vimeoframeFull: {
+  //   width: "50%",
+  //   height: "73%",
+  // },
   buttonContainer: {
     width: "100%",
     display: "flex",
@@ -91,39 +98,39 @@ const useStyles = makeStyles((theme) => ({
 export default function EventFrame() {
   const classes = useStyles();
 
-  console.log(document.fullscreenElement);
-  console.log(window.screen.orientation);
-  console.log(window.navigator.userAgent);
+  // console.log(document.fullscreenElement);
+  // console.log(window.screen.orientation);
+  // console.log(window.navigator.userAgent);
 
-  const [orientation, setOrientation] = useState("");
+  // const [orientation, setOrientation] = useState("");
 
-  const width =
-    orientation === "landscape-primary" || orientation === "landscape-secondary"
-      ? "100vw"
-      : "100%";
-  const height =
-    orientation === "landscape-primary" || orientation === "landscape-secondary"
-      ? "100vh"
-      : "100%";
+  // const width =
+  //   orientation === "landscape-primary" || orientation === "landscape-secondary"
+  //     ? "100vw"
+  //     : "100%";
+  // const height =
+  //   orientation === "landscape-primary" || orientation === "landscape-secondary"
+  //     ? "100vh"
+  //     : "100%";
 
-  console.log(width, height);
+  // console.log(width, height);
 
-  function handleResize() {
-    let orientation =
-      (window.screen.orientation || {}).type ||
-      window.screen.mozOrientation ||
-      window.screen.msOrientation;
-    setOrientation(orientation);
-    console.log(orientation);
-  }
+  // function handleResize() {
+  //   let orientation =
+  //     (window.screen.orientation || {}).type ||
+  //     window.screen.mozOrientation ||
+  //     window.screen.msOrientation;
+  //   setOrientation(orientation);
+  //   console.log(orientation);
+  // }
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
 
-    return function cleanup() {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   return function cleanup() {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <div className={classes.goldborder}>
